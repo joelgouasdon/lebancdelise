@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Banc d'Élise — Joël Gouasdon | Lancement officiel</title>
+<!-- Placez ce fichier HTML dans le même dossier que « Aakash -Frozen in love- Musique douce et romantique libre de droit, sweet and romantic music.mp3 ». À défaut, un enregistrement réel de piano (archive.org) prend le relais, puis une musique de secours. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-600-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-500-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/eb-garamond@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/eb-garamond@latest/latin-400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/eb-garamond@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/great-vibes@latest/latin-400-normal.css">
+<style>
+:root{
+  --cream:#f1e8d6; --paper:#e7dabf; --paper-deep:#d9c8a6;
+  --ink:#33291d; --sepia:#6b5138; --sepia-soft:#8a6f52;
+  --green:#42503f; --green-deep:#2c362b;
+  --bordeaux:#6e2b25; --gold:#b98a3e; --gold-soft:#d3b078;
+  --inkblue:#3f5589;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:17px;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:2000;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");}
+::selection{background:var(--gold);color:var(--cream);}
+
+/* ---------- LE MERLE (vol naturel) ---------- */
+#merle{position:fixed;top:0;left:0;z-index:900;pointer-events:none;will-change:transform;filter:drop-shadow(0 3px 3px rgba(0,0,0,.25));}
+
+/* ---------- NAV ---------- */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;transition:all .5s ease;background:transparent;}
+#mainNav.scrolled{background:rgba(241,232,214,.96);box-shadow:0 2px 20px rgba(51,41,29,.15);padding:.7rem 3rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:.14em;color:var(--cream);text-decoration:none;transition:color .4s;text-transform:uppercase;}
+#mainNav.scrolled .nav-brand{color:var(--bordeaux);}
+.nav-links{display:flex;gap:2.1rem;align-items:center;}
+.nav-links a{font-size:.88rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);text-decoration:none;position:relative;transition:color .4s;}
+#mainNav.scrolled .nav-links a{color:var(--sepia);}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .35s ease;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{font-size:.84rem;letter-spacing:.2em;text-transform:uppercase;padding:.55rem 1.4rem;border:1px solid var(--gold-soft);color:var(--cream)!important;transition:all .4s!important;}
+.nav-cta:hover{background:var(--bordeaux);border-color:var(--bordeaux);}
+.nav-cta::after{display:none;}
+@media(max-width:900px){#mainNav{padding:1rem 1.4rem;}#mainNav.scrolled{padding:.7rem 1.4rem;}.nav-links{gap:1.1rem;}.nav-links a:not(.nav-cta){display:none;}}
+
+/* ---------- HERO ---------- */
+#accueil{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
+.hero-bg{position:absolute;inset:0;background:url("https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/17ca8d4dd-30ff-47a5-b5d7-8fea9fd76f86.png") center 42%/cover no-repeat;animation:heroZoom 26s ease-in-out infinite alternate;}
+@keyframes heroZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,26,18,.6),rgba(30,26,18,.12) 45%,rgba(24,20,14,.62));}
+.fog{position:absolute;left:-30%;width:160%;height:45%;pointer-events:none;opacity:.4;background:radial-gradient(ellipse at center,rgba(230,228,215,.5),transparent 65%);filter:blur(6px);}
+.fog-a{bottom:16%;animation:fogDrift 34s ease-in-out infinite alternate;}
+.fog-b{bottom:42%;opacity:.25;animation:fogDrift 46s ease-in-out infinite alternate-reverse;}
+@keyframes fogDrift{from{transform:translateX(-8%);}to{transform:translateX(10%);}}
+#leavesCanvas{position:absolute;inset:0;pointer-events:none;}
+.hero-content{position:relative;z-index:5;padding:0 1.4rem;max-width:960px;margin-bottom:11rem;}
+.hero-over{font-family:'Great Vibes',cursive;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--gold-soft);margin-bottom:.6rem;animation:fadeUp 1.4s .3s ease both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:clamp(3.2rem,9vw,7.2rem);line-height:1.05;color:var(--cream);letter-spacing:.08em;text-shadow:0 4px 40px rgba(0,0,0,.55);animation:fadeUp 1.6s .55s ease both;}
+.hero-orn{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.4rem auto;animation:fadeUp 1.6s .8s ease both;}
+.hero-orn span{display:block;width:80px;height:1px;background:var(--gold-soft);opacity:.8;}
+.hero-orn i{color:var(--gold-soft);font-style:normal;font-size:1.2rem;}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.35rem,2.8vw,1.9rem);color:#e9dfc8;max-width:720px;margin:0 auto;line-height:1.5;animation:fadeUp 1.6s 1s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.hero-banner{position:absolute;left:0;right:0;margin:0 auto;bottom:5.2rem;z-index:6;width:min(92%,660px);
+  padding:1.1rem 1.6rem 1.2rem;border:1px solid rgba(211,176,120,.7);background:rgba(24,20,14,.66);backdrop-filter:blur(3px);
+  text-align:center;animation:fadeUp 1.6s 1.3s ease both;}
+.hb-top{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.05rem,2vw,1.25rem);color:var(--cream);letter-spacing:.1em;}
+.hb-lieu{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-size:clamp(1.2rem,2.4vw,1.5rem);letter-spacing:.12em;color:var(--gold-soft);line-height:1.2;margin-top:.25rem;}
+.hb-dates{margin-top:.4rem;font-size:clamp(1rem,2vw,1.15rem);letter-spacing:.2em;color:var(--cream);}
+.hb-ville{margin-top:.35rem;font-size:clamp(.85rem,1.7vw,.95rem);letter-spacing:.26em;text-transform:uppercase;color:#d8cdb4;}
+.hero-scroll{position:absolute;bottom:1rem;left:0;right:0;margin:0 auto;width:max-content;z-index:6;color:var(--cream);font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;text-decoration:none;opacity:.85;animation:fadeUp 1.6s 1.8s ease both;}
+.hero-scroll::after{content:"";display:block;width:1px;height:30px;margin:.6rem auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:scrollLine 2.2s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}55%{transform:scaleY(1);}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* ---------- BASE SECTIONS ---------- */
+section{position:relative;}
+.wrap{max-width:1140px;margin:0 auto;padding:6.5rem 2rem;}
+.kicker{font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,2.6vw,1.9rem);color:var(--gold);text-align:center;margin-bottom:.4rem;}
+.h2{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-weight:500;font-size:clamp(2.4rem,5vw,3.8rem);text-align:center;color:var(--bordeaux);line-height:1.15;}
+.orn{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:1.6rem auto 0;}
+.orn span{width:64px;height:1px;background:var(--gold);opacity:.7;}
+.orn i{color:var(--gold);font-style:normal;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ---------- LE ROMAN ---------- */
+#roman{background:var(--cream);}
+.roman-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4.5rem;align-items:center;margin-top:4rem;}
+.book-frame{position:relative;perspective:1200px;}
+.book{position:relative;width:min(400px,100%);margin:0 auto;box-shadow:16px 20px 48px rgba(51,41,29,.4);transform:rotateY(-6deg) rotateZ(.5deg);transition:transform .8s ease;border-radius:2px 8px 8px 2px;overflow:hidden;background:var(--green-deep);}
+.book:hover{transform:rotateY(0) rotateZ(0);}
+.book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:14px;z-index:3;background:linear-gradient(to right,rgba(0,0,0,.4),rgba(255,255,255,.12) 60%,transparent);}
+.book img{width:100%;display:block;}
+.roman-text p{font-size:1.22rem;margin-bottom:1.4rem;color:#41352a;}
+.roman-text p:first-of-type::first-letter{font-family:'Cormorant Garamond',serif;font-size:4.6rem;line-height:.85;float:left;padding:.15rem .7rem 0 0;color:var(--bordeaux);}
+.alice-quote{font-family:'Great Vibes',cursive;font-size:clamp(1.9rem,3.6vw,2.5rem);color:var(--inkblue);text-align:center;margin:2.2rem 0 .6rem;line-height:1.7;}
+.alice-quote-note{text-align:center;font-style:italic;color:var(--sepia-soft);font-size:.98rem;margin-bottom:1.6rem;}
+.roman-text .final-line{font-style:italic;color:var(--sepia);border-left:2px solid var(--gold);padding-left:1.3rem;margin-top:2rem;font-size:1.12rem;}
+@media(max-width:900px){.roman-grid{grid-template-columns:1fr;gap:3rem;}}
+
+/* ---------- SLIDERS ---------- */
+.trailer{position:relative;height:min(72vh,640px);margin-top:3.5rem;border:1px solid rgba(211,176,120,.35);outline:1px solid rgba(211,176,120,.2);outline-offset:8px;overflow:hidden;}
+.t-slide{position:absolute;inset:0;opacity:0;transition:opacity 2s ease;}
+.t-slide.active{opacity:1;}
+.t-slide img{width:100%;height:100%;object-fit:cover;animation:kbSlow 12s ease-in-out infinite alternate;}
+@keyframes kbSlow{from{transform:scale(1);}to{transform:scale(1.1);}}
+.t-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,18,.85),transparent 55%);}
+#bande .t-caption{position:absolute;bottom:9%;left:0;right:0;text-align:center;z-index:4;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.35rem,3vw,2rem);color:var(--cream);padding:0 2rem;transition:opacity .8s ease;}
+.t-caption.fade{opacity:0;}
+.t-dots{position:absolute;bottom:2.4%;left:0;right:0;display:flex;gap:.6rem;justify-content:center;z-index:4;}
+.t-dots b{width:26px;height:2px;background:rgba(241,232,214,.3);transition:background .5s;}
+.t-dots b.on{background:var(--gold-soft);}
+
+/* ---------- EXPOSITION ---------- */
+#exposition{background:#241c14;color:var(--cream);overflow:hidden;}
+#exposition .kicker{color:var(--gold-soft);}
+#exposition .h2{color:var(--cream);}
+.expo-intro{max-width:780px;margin:2.6rem auto 0;text-align:center;font-size:1.18rem;color:#d9cdb2;line-height:1.8;}
+.expo-stage{max-width:720px;margin:3.4rem auto 0;position:relative;}
+.expo-frame{background:#efe6d2;padding:16px 16px 8px;border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.45);outline-offset:7px;box-shadow:0 30px 70px rgba(0,0,0,.55);}
+.expo-frame .t-slide{position:relative;display:none;opacity:1;transition:none;}
+.expo-frame .t-slide.active{display:block;}
+.expo-frame .t-slide img{width:100%;height:min(58vh,540px);object-fit:contain;background:#f7f1e2;animation:none;}
+.expo-cap{position:static;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--sepia);padding:.9rem 0 .8rem;transition:opacity .8s ease;}
+.expo-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.6rem;}
+.expo-dots b{width:26px;height:2px;background:rgba(211,176,120,.3);transition:background .5s;}
+.expo-dots b.on{background:var(--gold-soft);}
+.path-row{display:flex;justify-content:center;flex-wrap:wrap;margin-top:3.6rem;row-gap:1.6rem;}
+.stop{position:relative;padding:0 1.3rem;text-align:center;}
+.stop::before{content:"";position:absolute;top:15px;right:50%;width:100%;height:1px;background:rgba(211,176,120,.35);}
+.stop:first-child::before{display:none;}
+.stop b{position:relative;z-index:1;display:flex;width:32px;height:32px;margin:0 auto;border:1px solid var(--gold-soft);border-radius:50%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--gold-soft);background:#241c14;font-size:1rem;}
+.stop span{display:block;margin-top:.55rem;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:#cbb98f;}
+.expo-close{text-align:center;margin-top:3.4rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.25rem,2.6vw,1.6rem);color:#e5d9bd;}
+.expo-close b{color:var(--gold-soft);font-weight:500;}
+
+/* ---------- MYSTERE ---------- */
+#mystere{background:var(--paper);}
+.myst-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:4rem;}
+.myst-card{background:var(--cream);border:1px solid rgba(107,81,56,.28);padding:2.6rem 2.4rem;box-shadow:0 10px 30px rgba(51,41,29,.1);transition:transform .5s ease,box-shadow .5s ease;}
+.myst-card:hover{transform:translateY(-8px);box-shadow:0 20px 44px rgba(51,41,29,.18);}
+.myst-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--gold);line-height:1;}
+.myst-card h3{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-weight:500;font-size:1.6rem;color:var(--bordeaux);margin-top:.9rem;line-height:1.3;}
+.myst-card p{margin-top:.8rem;color:var(--sepia);font-style:italic;font-size:1.05rem;}
+.myst-close{text-align:center;margin-top:3.6rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.75rem);color:var(--sepia);}
+.myst-close b{color:var(--bordeaux);font-weight:500;}
+@media(max-width:800px){.myst-grid{grid-template-columns:1fr;}}
+
+/* ---------- CITATION ---------- */
+#citation{background:var(--bordeaux);color:var(--cream);}
+#citation .wrap{max-width:900px;text-align:center;}
+.big-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.5;}
+.big-quote::before{content:"« ";color:var(--gold-soft);}
+.big-quote::after{content:" »";color:var(--gold-soft);}
+.quote-author{margin-top:1.8rem;letter-spacing:.3em;text-transform:uppercase;font-size:.86rem;color:var(--gold-soft);}
+.quote-note{margin-top:1.4rem;font-style:italic;font-size:1.05rem;opacity:.85;}
+
+/* ---------- EVENEMENTS ---------- */
+#evenements{background:var(--cream);}
+.evt-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-top:4rem;}
+.evt-card{background:var(--paper);border:1px solid rgba(107,81,56,.3);box-shadow:0 14px 40px rgba(51,41,29,.14);display:flex;flex-direction:column;overflow:hidden;transition:transform .5s ease;}
+.evt-card:hover{transform:translateY(-8px);}
+.evt-img{position:relative;height:300px;overflow:hidden;}
+.evt-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease;}
+.evt-card:hover .evt-img img{transform:scale(1.08);}
+.evt-date{position:absolute;top:1.2rem;left:1.2rem;background:var(--bordeaux);color:var(--cream);padding:.6rem 1.1rem;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.3);}
+.evt-date b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.7rem;line-height:1;}
+.evt-date span{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;}
+.evt-body{padding:2.2rem 2.2rem 2.6rem;display:flex;flex-direction:column;flex:1;}
+.evt-body h3{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-weight:500;font-size:1.8rem;color:var(--bordeaux);line-height:1.25;}
+.evt-place{margin-top:.6rem;font-size:.88rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+.evt-body p{margin-top:1.1rem;color:#4a3d2e;flex:1;font-size:1.08rem;}
+.btn{display:inline-block;margin-top:1.8rem;align-self:flex-start;font-size:.86rem;letter-spacing:.26em;text-transform:uppercase;padding:.95rem 2.1rem;border:1px solid var(--bordeaux);color:var(--bordeaux);background:transparent;cursor:pointer;transition:all .4s ease;font-family:'EB Garamond',serif;text-decoration:none;}
+.btn:hover{background:var(--bordeaux);color:var(--cream);box-shadow:0 10px 24px rgba(110,43,37,.3);}
+.evt-note{text-align:center;margin-top:3rem;font-style:italic;color:var(--sepia);font-size:1.08rem;}
+@media(max-width:900px){.evt-grid{grid-template-columns:1fr;}}
+
+/* ---------- RESERVATION ---------- */
+#reservation{background:url("https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1ba1cabc4-6c0c-42ff-a536-08badabadaf5.png") center/cover no-repeat fixed;}
+#reservation::before{content:"";position:absolute;inset:0;background:rgba(231,218,191,.9);}
+#reservation .wrap{position:relative;}
+.form-card{max-width:780px;margin:3.6rem auto 0;background:var(--cream);border:1px solid rgba(107,81,56,.35);box-shadow:0 24px 60px rgba(51,41,29,.25);padding:3.2rem 3rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.field{margin-bottom:1.6rem;}
+.field label{display:block;font-size:.82rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sepia);margin-bottom:.5rem;}
+.field input,.field select{width:100%;padding:.9rem 1rem;border:1px solid rgba(107,81,56,.4);background:#fbf6ea;font-family:'EB Garamond',serif;font-size:1.08rem;color:var(--ink);transition:border .3s,box-shadow .3s;border-radius:0;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(185,138,62,.18);}
+.day-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.day-card{position:relative;cursor:pointer;}
+.day-card input{position:absolute;opacity:0;}
+.day-card .dc{display:block;text-align:center;padding:1rem .6rem;border:1px solid rgba(107,81,56,.4);background:#fbf6ea;transition:all .35s ease;}
+.day-card .dc b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--bordeaux);line-height:1.1;}
+.day-card .dc span{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sepia);margin-top:.3rem;}
+.day-card .dc em{display:block;font-style:italic;font-size:.86rem;color:var(--sepia-soft);margin-top:.4rem;line-height:1.4;}
+.day-card input:checked + .dc{background:var(--bordeaux);border-color:var(--bordeaux);box-shadow:0 10px 26px rgba(110,43,37,.35);transform:translateY(-4px);}
+.day-card input:checked + .dc b{color:var(--cream);}
+.day-card input:checked + .dc span,.day-card input:checked + .dc em{color:var(--gold-soft);}
+.form-submit{width:100%;text-align:center;padding:1.1rem;font-size:.92rem;}
+.form-error{color:var(--bordeaux);font-style:italic;margin-top:1rem;text-align:center;display:none;}
+#confirmBox{display:none;text-align:center;padding:2rem 0;}
+#confirmBox .ok-orn{font-size:2.4rem;color:var(--gold);}
+#confirmBox h3{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-weight:500;font-size:2.2rem;color:var(--bordeaux);margin-top:1rem;}
+#confirmBox p{margin-top:1rem;font-size:1.12rem;color:#4a3d2e;}
+#confirmBox .ticket{display:inline-block;margin-top:1.8rem;padding:1rem 2rem;border:1px dashed var(--gold);background:#fbf6ea;font-style:italic;color:var(--sepia);}
+#editBtn{margin-top:1.4rem;margin-right:.8rem;}
+#mailLink{margin-top:1.4rem;}
+@media(max-width:800px){.form-row{grid-template-columns:1fr;}.day-cards{grid-template-columns:1fr;}.form-card{padding:2.2rem 1.6rem;}}
+
+/* ---------- AUTEUR ---------- */
+#auteur{background:var(--paper);}
+.auteur-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center;margin-top:3.6rem;}
+.auteur-grid img{width:100%;display:block;border:1px solid rgba(107,81,56,.35);box-shadow:14px 14px 0 var(--paper-deep),14px 14px 0 1px rgba(107,81,56,.3);}
+.auteur-txt h3{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-weight:500;font-size:2.2rem;color:var(--bordeaux);}
+.auteur-txt .sig{font-family:'Great Vibes',cursive;color:var(--gold);margin:.4rem 0 1.4rem;font-size:1.5rem;}
+.auteur-txt p{margin-bottom:1.1rem;color:#4a3d2e;font-size:1.1rem;}
+@media(max-width:900px){.auteur-grid{grid-template-columns:1fr;}}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--green-deep);color:#cfc6ae;text-align:center;padding:4rem 2rem;}
+footer .f-title{font-family:'Cormorant Garamond',serif;text-transform:uppercase;font-size:1.9rem;color:var(--cream);letter-spacing:.12em;}
+footer .f-orn{color:var(--gold-soft);margin:1rem 0;}
+footer p{font-size:.98rem;font-style:italic;}
+footer .f-small{font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-style:normal;margin-top:1.4rem;opacity:.75;}
+
+/* ---------- MUSIQUE ---------- */
+#musicBtn{position:fixed;right:1.4rem;bottom:1.4rem;z-index:1500;width:56px;height:56px;border-radius:50%;border:1px solid var(--gold);background:rgba(36,28,20,.88);color:var(--gold-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+#musicBtn:hover{transform:scale(1.08);}
+#musicBtn .note{font-size:1.4rem;line-height:1;}
+#musicBtn .bars{display:none;gap:3px;align-items:flex-end;height:18px;}
+#musicBtn .bars i{width:3px;background:var(--gold-soft);animation:eq 1s ease-in-out infinite;}
+#musicBtn .bars i:nth-child(1){height:8px;animation-delay:0s;}
+#musicBtn .bars i:nth-child(2){height:16px;animation-delay:.2s;}
+#musicBtn .bars i:nth-child(3){height:11px;animation-delay:.4s;}
+@keyframes eq{0%,100%{transform:scaleY(.5);}50%{transform:scaleY(1.15);}}
+#musicBtn.on .bars{display:flex;}
+#musicBtn.on .note{display:none;}
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="Aakash%20-%20Frozen%20in%20love-%20Musique%20douce%20et%20romantique%20libre%20de%20droit,%20sweet%20and%20romantic%20music.mp3" type="audio/mpeg">
+  <source src="https://archive.org/download/SoftPianoMusicSleepingMusic/Piano%20Romantic%20Music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Le merle : vol naturel en zigzag -->
+<div id="merle" aria-hidden="true">
+  <svg width="92" height="62" viewBox="0 0 90 60">
+    <path d="M16 30 L2 24 L5 31 L2 37 L16 34 Z" fill="#14100d"/>
+    <path id="wingBack" d="M44 28 C 38 14, 30 6, 18 4 C 26 14, 34 22, 40 30 Z" fill="#0c0a08"/>
+    <path d="M16 30 C 22 22, 34 18, 46 20 C 58 22, 66 26, 70 30 C 66 36, 54 40, 42 39 C 30 38, 22 35, 16 30 Z" fill="#1a1512"/>
+    <circle cx="68" cy="26" r="8.5" fill="#1a1512"/>
+    <path d="M75 24 L88 26.5 L75 29 Z" fill="#ee9209"/>
+    <circle cx="70" cy="24.5" r="1.5" fill="#f5b632"/>
+    <path id="wingFront" d="M46 30 C 40 14, 32 4, 18 2 C 28 12, 36 22, 42 32 Z" fill="#262019"/>
+  </svg>
+</div>
+
+<nav id="mainNav">
+  <a class="nav-brand" href="#accueil">Le Banc d'Élise</a>
+  <div class="nav-links">
+    <a href="#roman">Le roman</a>
+    <a href="#exposition">Exposition</a>
+    <a href="#evenements">Événements</a>
+    <a href="#auteur">L'auteur</a>
+    <a href="#reservation" class="nav-cta">Réserver</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="fog fog-a"></div>
+  <div class="fog fog-b"></div>
+  <canvas id="leavesCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-over">Joël Gouasdon</div>
+    <h1 class="hero-title">Le Banc<br>d'Élise</h1>
+    <div class="hero-orn"><span></span><i>❦</i><span></span></div>
+    <p class="hero-tag">Un message caché dans <em>Le Grand Meaulnes</em>.<br>Un secret. Un voyage vers la lumière.</p>
+  </div>
+  <div class="hero-banner">
+    <div class="hb-top">Lancement officiel</div>
+    <div class="hb-lieu">Maison École du Grand Meaulnes</div>
+    <div class="hb-dates">23 · 24 · 25 octobre 2026</div>
+    <div class="hb-ville">Épineuil-le-Fleuriel · Cher</div>
+  </div>
+  <a class="hero-scroll" href="#roman">Découvrir</a>
+</section>
+
+<!-- ============ LE ROMAN ============ -->
+<section id="roman">
+  <div class="wrap">
+    <div class="kicker reveal">Le roman</div>
+    <h2 class="h2 reveal">Et si un livre vous attendait&nbsp;?</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+
+    <div class="roman-grid">
+      <div class="book-frame reveal">
+        <div class="book">
+          <img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/129b5ae0f-940c-4c26-8b75-dab0fc61b3b6.png" alt="Le Banc d'Élise — la lectrice au bord de l'étang">
+        </div>
+      </div>
+      <div class="roman-text reveal">
+        <p>Un matin de novembre, sur un banc d'un parc de Vendée, un homme trouve un livre. <em>Le Grand Meaulnes</em>. Posé là, comme s'il l'attendait.</p>
+        <p>Entre les pages, une lettre signée d'une certaine Alice, qu'il ne connaît pas, et qui pourtant semble tout savoir de lui.</p>
+        <p>Joël Yonart est dessinateur. Sa femme, Élise, est morte cinq ans plus tôt. Depuis, ses mains ont oublié comment tenir un crayon.</p>
+        <div class="alice-quote">«&nbsp;Vous croyez avoir tout perdu, écrit Alice.<br>Vous n'avez encore rien retrouvé.&nbsp;»</div>
+        <div class="alice-quote-note">— la lettre d'Alice, tracée à la plume, à l'encre bleue</div>
+        <p>Alors il prend la route…</p>
+        <p class="final-line">Le Banc d'Élise est un roman du retour à la vie, et de ces livres qu'on dépose à temps sur les bancs, pour ceux qui ne savent pas encore qu'ils les attendent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EN IMAGES ============ -->
+<section id="bande">
+  <div class="wrap">
+    <div class="kicker reveal">En images</div>
+    <h2 class="h2 reveal" style="color:var(--cream)">L'esprit du roman</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+    <div class="trailer reveal" id="trailerBox">
+      <div class="t-slide active" data-caption="Un matin de novembre…"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/17ca8d4dd-30ff-47a5-b5d7-8fea9fd76f86.png" alt="Le banc face à l'étang, Le Grand Meaulnes posé là"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Un banc. Un livre. Une absence."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/129b5ae0f-940c-4c26-8b75-dab0fc61b3b6.png" alt="La lectrice en robe blanche"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Et la route qui s'ouvre, vers le pays du Grand Meaulnes."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1ba1cabc4-6c0c-42ff-a536-08badabadaf5.png" alt="La route du Berry"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Sur les traces d'un roman aimé."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1636e91f7-038a-492f-a909-c9cdb7536d27.png" alt="La classe de Sainte-Agathe"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Jusqu'à la lumière."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/14ddec9c6-b769-4331-ba4f-8bdad002fa76.png" alt="Le château aux lanternes"><div class="t-veil"></div></div>
+      <div class="t-caption">Un matin de novembre…</div>
+      <div class="t-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPOSITION : LES DESSINS DU ROMAN ============ -->
+<section id="exposition">
+  <div class="wrap">
+    <div class="kicker reveal">Au Musée École du Grand Meaulnes</div>
+    <h2 class="h2 reveal">Le chemin initiatique des dessins</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+    <p class="expo-intro reveal">Lors du lancement, les dessins originaux de l'auteur — ceux qui ouvrent chaque chapitre du roman — seront exposés dans l'ordre du récit, comme un chemin initiatique à travers la Maison École. Suivez le parcours tracé, de salle en salle, tableau après tableau…</p>
+
+    <div class="expo-stage reveal" id="expoBox">
+      <div class="expo-frame">
+        <div class="t-slide active" data-caption="Chapitre I — Le banc d'Élise"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/16db2b7f1-5c61-410f-a6f1-621b68ffb7d1.png" alt="Dessin original — l'homme au banc, le livre sous plastique"></div>
+        <div class="t-slide" data-caption="Chapitre VI — La route de l'Est"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1fa76a4b2-d26f-48b1-bcf1-1d9dc77a9bcd.png" alt="Dessin original — la route tracée au crayon"></div>
+        <div class="t-slide" data-caption="Chapitre VII — La classe de Sainte-Agathe"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/15dfa4544-e1fb-4723-b8d8-2984733e7787.png" alt="Dessin original — la maison d'école et son puits"></div>
+        <div class="t-slide" data-caption="Chapitre XIII — La dame en blanc"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/11b50dea4-aa5a-415f-b535-67251661d994.png" alt="Dessin original — la dame en blanc au jardin d'hiver, sous la lune"></div>
+        <div class="t-caption expo-cap">Chapitre I — Le banc d'Élise</div>
+      </div>
+      <div class="expo-dots"></div>
+    </div>
+
+    <div class="path-row reveal">
+      <div class="stop"><b>I</b><span>Le banc</span></div>
+      <div class="stop"><b>VI</b><span>La route</span></div>
+      <div class="stop"><b>VII</b><span>La classe</span></div>
+      <div class="stop"><b>XIII</b><span>La dame en blanc</span></div>
+      <div class="stop"><b>✒</b><span>Dédicace</span></div>
+    </div>
+
+    <p class="expo-close reveal">Au bout du parcours, <b>l'auteur vous attend</b>, plume en main,<br>pour dédicacer votre exemplaire.</p>
+  </div>
+</section>
+
+<!-- ============ MYSTERE ============ -->
+<section id="mystere">
+  <div class="wrap">
+    <div class="kicker reveal">Ce que vous vous demanderez</div>
+    <h2 class="h2 reveal">Quatre portes entrouvertes</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+    <div class="myst-grid">
+      <div class="myst-card reveal"><div class="myst-num">I.</div><h3>Qui est Alice, qui semble tout savoir de lui&nbsp;?</h3><p>Une inconnue qui l'attendait. Une écriture à la plume, une encre bleue d'un autre temps.</p></div>
+      <div class="myst-card reveal"><div class="myst-num">II.</div><h3>Pourquoi ce livre, sur ce banc, ce matin-là&nbsp;?</h3><p>Un livre ne naît pas sur un banc. Il y est déposé. Par qui&nbsp;? Pour quoi&nbsp;?</p></div>
+      <div class="myst-card reveal"><div class="myst-num">III.</div><h3>Où mène la ligne rouge tracée sur la carte&nbsp;?</h3><p>Des chemins de traverse, un village hors du temps, le pays d'un roman aimé.</p></div>
+      <div class="myst-card reveal"><div class="myst-num">IV.</div><h3>Que restait-il d'Élise qu'il n'avait jamais vu&nbsp;?</h3><p>Chacun croit connaître ceux qu'il aime. Et pourtant…</p></div>
+    </div>
+    <p class="myst-close reveal">Aucune réponse ici.<br><b>Elles vous attendent entre les pages.</b></p>
+  </div>
+</section>
+
+<!-- ============ CITATION ============ -->
+<section id="citation">
+  <div class="wrap">
+    <p class="big-quote reveal">Un voyage initiatique… un véritable hymne à la Nature.</p>
+    <div class="quote-author reveal">Jean-Yves Revault — écrivain, préface</div>
+    <p class="quote-note reveal">Un roman placé sous l'ombre bienveillante d'Alain-Fournier<br>et du <em>Grand Meaulnes</em>.</p>
+  </div>
+</section>
+
+<!-- ============ EVENEMENTS ============ -->
+<section id="evenements">
+  <div class="wrap">
+    <div class="kicker reveal">Le lancement officiel</div>
+    <h2 class="h2 reveal">Trois jours sur les terres<br>du Grand Meaulnes</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+    <div class="evt-grid">
+      <div class="evt-card reveal">
+        <div class="evt-img">
+          <img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1636e91f7-038a-492f-a909-c9cdb7536d27.png" alt="La classe du Musée École du Grand Meaulnes, pupitres d'époque et poêle central">
+          <div class="evt-date"><span>oct.</span><b>23·24</b><span>2026</span></div>
+        </div>
+        <div class="evt-body">
+          <h3>Maison École du Grand Meaulnes</h3>
+          <div class="evt-place">Épineuil-le-Fleuriel · Cher</div>
+          <p>Vendredi 23 et samedi 24 octobre, le roman naît là où tout a commencé&nbsp;: l'école où Alain-Fournier fut élève. Parcours-exposition des dessins, rencontre avec l'auteur et dédicaces, entre les pupitres d'autrefois.</p>
+          <button class="btn" data-day="23">Réserver ma place</button>
+        </div>
+      </div>
+      <div class="evt-card reveal">
+        <div class="evt-img">
+          <img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/14ddec9c6-b769-4331-ba4f-8bdad002fa76.png" alt="Le Château de Cornançay aux lanternes">
+          <div class="evt-date"><span>oct.</span><b>25</b><span>2026</span></div>
+        </div>
+        <div class="evt-body">
+          <h3>Château de Cornançay</h3>
+          <div class="evt-place">Épineuil-le-Fleuriel · Cher</div>
+          <p>Le dimanche 25 octobre, grande journée de lancement dans un domaine qui semble tout droit sorti d'un domaine perdu&nbsp;: lanternes, lecture au bord de l'eau et dédicaces au cœur de l'automne.</p>
+          <button class="btn" data-day="25">Réserver ma place</button>
+        </div>
+      </div>
+    </div>
+    <p class="evt-note reveal">Entrée libre sur réservation — les places sont comptées, comme les exemplaires du premier jour.</p>
+  </div>
+</section>
+
+<!-- ============ RESERVATION ============ -->
+<section id="reservation">
+  <div class="wrap">
+    <div class="kicker reveal">Réservation</div>
+    <h2 class="h2 reveal">Je viendrai au lancement</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+
+    <div class="form-card reveal">
+      <form id="resForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="fNom">Nom & prénom *</label>
+            <input type="text" id="fNom" name="nom" placeholder="Votre nom" required>
+          </div>
+          <div class="field">
+            <label for="fMail">Courriel *</label>
+            <input type="email" id="fMail" name="email" placeholder="vous@exemple.fr" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Choisissez votre journée *</label>
+          <div class="day-cards">
+            <label class="day-card"><input type="radio" name="jour" value="23"><span class="dc"><b>23</b><span>octobre</span><em>Maison École<br>du Grand Meaulnes</em></span></label>
+            <label class="day-card"><input type="radio" name="jour" value="24"><span class="dc"><b>24</b><span>octobre</span><em>Maison École<br>du Grand Meaulnes</em></span></label>
+            <label class="day-card"><input type="radio" name="jour" value="25"><span class="dc"><b>25</b><span>octobre</span><em>Château<br>de Cornançay</em></span></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="fPlaces">Nombre de places</label>
+            <select id="fPlaces" name="places">
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fMsg">Un mot pour l'auteur (facultatif)</label>
+            <input type="text" id="fMsg" name="message" placeholder="Votre message…">
+          </div>
+        </div>
+        <button type="submit" class="btn form-submit">Confirmer ma réservation</button>
+        <p class="form-error" id="formError"></p>
+      </form>
+
+      <div id="confirmBox">
+        <div class="ok-orn">❦</div>
+        <h3>Votre place est réservée</h3>
+        <p id="confirmText"></p>
+        <div class="ticket" id="confirmTicket"></div>
+        <p style="margin-top:1.6rem;font-style:italic;color:var(--sepia);">Pour finaliser, envoyez votre réservation à l'auteur&nbsp;:<br>
+          <a id="mailLink" class="btn" href="#">Envoyer par e-mail à joelgouasdon@gmail.com</a>
+        </p>
+        <p style="margin-top:1.2rem;font-style:italic;color:var(--sepia);">À très bientôt, sur les terres du Grand Meaulnes.</p>
+        <button class="btn" id="editBtn">Modifier ma réservation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+<section id="auteur">
+  <div class="wrap">
+    <div class="kicker reveal">L'auteur</div>
+    <h2 class="h2 reveal">Joël Gouasdon</h2>
+    <div class="orn reveal"><span></span><i>❦</i><span></span></div>
+    <div class="auteur-grid">
+      <div class="reveal"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1b8af5a1f-34d8-4c40-af19-d6b47ff3cb3e.png" alt="Les dessins au crayon de l'auteur, d'un réalisme saisissant"></div>
+      <div class="auteur-txt reveal">
+        <h3>Dessinateur & écrivain</h3>
+        <div class="sig">sous le nom d'artiste ARTYON</div>
+        <p>Né en 1960 en Normandie, Joël Gouasdon a fait du dessin et de l'écriture sa langue secrète&nbsp;: deux gestes qui n'en font qu'un, tracer et dire.</p>
+        <p>Médaille de Vermeil de l'Académie des Arts, Sciences et Lettres de Paris (2022), il expose régulièrement ses œuvres — des feuilles au crayon d'un réalisme saisissant — et poursuit une route littéraire intime, où la mémoire et la lumière se répondent.</p>
+        <p><em>Le Banc d'Élise</em> est son nouveau roman, un livre né sur un rêve, sur les pas d'Alain-Fournier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-title">Le Banc d'Élise</div>
+  <div class="f-orn">❦</div>
+  <p>Un roman de Joël Gouasdon — illustrations réalisées par l'auteur.</p>
+  <div class="f-small">Musée École du Grand Meaulnes — 2026</div>
+</footer>
+
+<button id="musicBtn" title="Musique d'ambiance" aria-label="Musique d'ambiance">
+  <span class="note">♪</span>
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<script>
+/* ---------- Navigation ---------- */
+var navBar = document.getElementById('mainNav');
+window.addEventListener('scroll', function(){
+  navBar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ---------- MUSIQUE : fichier fourni → vrai enregistrement de piano → secours ---------- */
+var bgMusic = document.getElementById('bgMusic');
+var musicBtn = document.getElementById('musicBtn');
+var useFallback = false;
+var userInteracted = false;
+bgMusic.volume = 0.6;
+
+/* --- Secours (si aucun fichier) : piano humanisé + réverbération --- */
+var webCtx=null, webBus=null, webMaster=null, webTimer=null, webBarIndex=0, webNextT=0, webPlaying=false;
+var WEB_BAR = 2.8;
+var CANON = [
+  {b:146.83, a:[293.66,369.99,440.00], m:[739.99,659.25]},
+  {b:110.00, a:[277.18,329.63,440.00], m:[587.33,554.37]},
+  {b:123.47, a:[293.66,369.99,493.88], m:[493.88,440.00]},
+  {b: 92.50, a:[277.18,369.99,440.00], m:[369.99,392.00]},
+  {b: 98.00, a:[246.94,293.66,392.00], m:[392.00,369.99]},
+  {b:146.83, a:[293.66,369.99,440.00], m:[329.63,293.66]},
+  {b: 98.00, a:[246.94,293.66,392.00], m:[329.63,369.99]},
+  {b:110.00, a:[277.18,329.63,440.00], m:[392.00,440.00]}
+];
+function ensureWeb(){
+  if(webCtx) return;
+  webCtx = new (window.AudioContext || window.webkitAudioContext)();
+  webMaster = webCtx.createGain(); webMaster.gain.value = 0.9; webMaster.connect(webCtx.destination);
+  webBus = webCtx.createGain(); webBus.gain.value = 1; webBus.connect(webMaster);
+  var conv = webCtx.createConvolver(); conv.buffer = makeImpulse(2.6, 2.8);
+  var wet = webCtx.createGain(); wet.gain.value = 0.45;
+  webBus.connect(conv); conv.connect(wet); wet.connect(webMaster);
+}
+function makeImpulse(dur, decay){
+  var rate = webCtx.sampleRate, len = Math.floor(rate*dur);
+  var buf = webCtx.createBuffer(2, len, rate);
+  for(var ch=0; ch<2; ch++){
+    var d = buf.getChannelData(ch);
+    for(var i=0;i<len;i++){ d[i] = (Math.random()*2-1) * Math.pow(1-i/len, decay); }
+  }
+  return buf;
+}
+function pianoNote(freq, t, dur, vol){
+  var hum = 0.85 + Math.random()*0.3;           /* vélocité humaine */
+  t += (Math.random()*0.05 - 0.025);            /* micro-décalage de jeu */
+  var g = webCtx.createGain(); g.connect(webBus);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol*hum, t+0.025);
+  g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+  var o1 = webCtx.createOscillator(); o1.type='sine'; o1.frequency.value=freq;
+  var o2 = webCtx.createOscillator(); o2.type='sine'; o2.frequency.value=freq*2; o2.detune.value=3;
+  var g2 = webCtx.createGain(); g2.gain.value=0.3;
+  var o3 = webCtx.createOscillator(); o3.type='triangle'; o3.frequency.value=freq; o3.detune.value=-4;
+  var g3 = webCtx.createGain(); g3.gain.value=0.16;
+  o1.connect(g); o2.connect(g2); g2.connect(g); o3.connect(g3); g3.connect(g);
+  o1.start(t); o2.start(t); o3.start(t);
+  o1.stop(t+dur+0.05); o2.stop(t+dur+0.05); o3.stop(t+dur+0.05);
+}
+function webBar(i, t){
+  var c = CANON[i % 8];
+  pianoNote(c.b/2, t, 2.6, 0.12);
+  pianoNote(c.b, t, 2.2, 0.14);
+  pianoNote(c.a[0], t+0.9, 1.4, 0.10);
+  pianoNote(c.a[1], t+1.9, 1.4, 0.09);
+  pianoNote(c.a[2], t+1.4, 1.6, 0.08);
+  pianoNote(c.m[0], t+0.2, 2.1, 0.085);
+  pianoNote(c.m[1], t+1.5, 1.9, 0.075);
+}
+function webTick(){
+  while(webNextT < webCtx.currentTime + 1.2){
+    webBar(webBarIndex, webNextT);
+    webNextT += WEB_BAR; webBarIndex++;
+  }
+}
+function startWebMusic(){
+  ensureWeb();
+  webCtx.resume();
+  if(!webTimer){ webNextT = webCtx.currentTime + 0.1; webBarIndex = 0; webTimer = setInterval(webTick, 400); webTick(); }
+  webPlaying = true; setMusicOn(true);
+}
+function stopWebMusic(){
+  if(webCtx){ webCtx.suspend(); }
+  webPlaying = false; setMusicOn(false);
+}
+function setMusicOn(on){ musicBtn.classList.toggle('on', on); }
+function launchMusic(){
+  if(useFallback){ if(!webPlaying){ startWebMusic(); } return; }
+  var p = bgMusic.play();
+  if(p){ p.then(function(){ setMusicOn(true); }).catch(function(){}); }
+}
+var lastSource = bgMusic.querySelectorAll('source');
+lastSource[lastSource.length-1].addEventListener('error', function(){
+  useFallback = true;
+  if(userInteracted){ startWebMusic(); }
+});
+bgMusic.addEventListener('play', function(){ setMusicOn(true); });
+bgMusic.addEventListener('pause', function(){ if(!useFallback){ setMusicOn(false); } });
+window.addEventListener('load', launchMusic);
+function onFirstGesture(ev){
+  if(ev.target.closest && ev.target.closest('#musicBtn')){ return; }
+  userInteracted = true;
+  launchMusic();
+  document.removeEventListener('pointerdown', onFirstGesture);
+  document.removeEventListener('keydown', onFirstGesture);
+}
+document.addEventListener('pointerdown', onFirstGesture);
+document.addEventListener('keydown', onFirstGesture);
+musicBtn.addEventListener('click', function(ev){
+  ev.stopPropagation();
+  userInteracted = true;
+  if(useFallback){
+    if(webPlaying){ stopWebMusic(); } else { startWebMusic(); }
+  } else {
+    if(bgMusic.paused){ bgMusic.play().catch(function(){ useFallback = true; startWebMusic(); }); }
+    else { bgMusic.pause(); }
+  }
+});
+
+/* ---------- LE MERLE : vol naturel en zigzag ---------- */
+var merleWrap = document.getElementById('merle');
+var wingFEl = document.getElementById('wingFront');
+var wingBEl = document.getElementById('wingBack');
+var mvw = window.innerWidth, mvh = window.innerHeight;
+window.addEventListener('resize', function(){ mvw = window.innerWidth; mvh = window.innerHeight; });
+var bird = { x:-140, y: mvh*0.3, vx:90, vy:0, dir:1, mode:'flap', mt:0, phase:0, dur:1.1, bob:0 };
+function makePath(){
+  var pts = []; var x = -140; var y = mvh*(0.12+Math.random()*0.5);
+  pts.push({x:x,y:y});
+  while(x < mvw+160){
+    x += 150 + Math.random()*230;
+    y = mvh*(0.08 + Math.random()*0.62);
+    pts.push({x:x,y:y});
+  }
+  return pts;
+}
+var flightPath = makePath(); var pathIdx = 1; var lastTs = null;
+function merleFrame(ts){
+  if(lastTs === null){ lastTs = ts; }
+  var dt = Math.min(0.05, (ts-lastTs)/1000); lastTs = ts;
+  var tgt = flightPath[pathIdx];
+  var dx = tgt.x-bird.x, dy = tgt.y-bird.y;
+  var dist = Math.sqrt(dx*dx+dy*dy) || 1;
+  if(dist < 42){
+    pathIdx++;
+    if(pathIdx >= flightPath.length){ flightPath = makePath(); pathIdx = 1; bird.x = -140; bird.y = flightPath[0].y; }
+  }
+  var speed = 115 + Math.sin(ts*0.0004)*28;
+  var dvx = dx/dist*speed, dvy = dy/dist*speed;
+  var k = Math.min(1, dt*2.0);
+  bird.vx += (dvx-bird.vx)*k; bird.vy += (dvy-bird.vy)*k;
+  bird.x += bird.vx*dt; bird.y += bird.vy*dt;
+  bird.dir = bird.vx >= 0 ? 1 : -1;
+  /* battement / plané */
+  bird.mt += dt;
+  var wingA;
+  if(bird.mode === 'flap'){
+    bird.phase += dt*13;
+    wingA = Math.sin(bird.phase)*48 + 8;
+    bird.bob = Math.sin(bird.phase)*2.2;
+    if(bird.mt > bird.dur){ bird.mode='glide'; bird.mt=0; bird.dur = 0.6 + Math.random()*0.9; }
+  } else {
+    wingA = 14 + Math.sin(bird.mt*5)*5;
+    bird.bob = Math.min(5, bird.bob + dt*7);
+    if(bird.mt > bird.dur){ bird.mode='flap'; bird.mt=0; bird.dur = 0.7 + Math.random()*1.0; bird.phase=0; }
+  }
+  wingFEl.setAttribute('transform','rotate('+wingA.toFixed(1)+' 46 30)');
+  wingBEl.setAttribute('transform','rotate('+(wingA*0.85-6).toFixed(1)+' 44 28)');
+  var ang = Math.atan2(bird.vy, Math.abs(bird.vx))*0.55;
+  var tiltDeg = ang*180/Math.PI * (bird.dir===1?1:-1);
+  merleWrap.style.transform = 'translate('+bird.x.toFixed(1)+'px,'+(bird.y+bird.bob).toFixed(1)+'px) rotate('+tiltDeg.toFixed(1)+'deg) scale('+bird.dir+',1)';
+  requestAnimationFrame(merleFrame);
+}
+requestAnimationFrame(merleFrame);
+
+/* ---------- Feuilles qui tombent ---------- */
+var leavesCanvas = document.getElementById('leavesCanvas');
+var leavesCtx = leavesCanvas.getContext('2d');
+var leafList = [];
+var leafColors = ['#b98a3e','#8a5a2b','#6e2b25','#a4713a','#7d6a3a'];
+function sizeLeaves(){ leavesCanvas.width = leavesCanvas.offsetWidth; leavesCanvas.height = leavesCanvas.offsetHeight; }
+sizeLeaves();
+window.addEventListener('resize', sizeLeaves);
+function makeLeaf(initial){
+  return { lx: Math.random()*leavesCanvas.width, ly: initial ? Math.random()*leavesCanvas.height : -20,
+    ls: 3 + Math.random()*5, lvx: -0.4 + Math.random()*0.8, lvy: 0.6 + Math.random()*1.2,
+    lr: Math.random()*Math.PI*2, lvr: -0.02 + Math.random()*0.04,
+    lc: leafColors[Math.floor(Math.random()*leafColors.length)], lo: 0.3 + Math.random()*0.4 };
+}
+for(var li=0; li<34; li++){ leafList.push(makeLeaf(true)); }
+function drawLeaves(){
+  leavesCtx.clearRect(0,0,leavesCanvas.width,leavesCanvas.height);
+  for(var k=0;k<leafList.length;k++){
+    var lf = leafList[k];
+    lf.lx += lf.lvx + Math.sin(lf.ly*0.01)*0.5; lf.ly += lf.lvy; lf.lr += lf.lvr;
+    if(lf.ly > leavesCanvas.height + 24){ leafList[k] = makeLeaf(false); continue; }
+    leavesCtx.save(); leavesCtx.translate(lf.lx, lf.ly); leavesCtx.rotate(lf.lr);
+    leavesCtx.globalAlpha = lf.lo; leavesCtx.fillStyle = lf.lc;
+    leavesCtx.beginPath(); leavesCtx.ellipse(0,0,lf.ls,lf.ls*0.55,0,0,Math.PI*2); leavesCtx.fill();
+    leavesCtx.restore();
+  }
+  requestAnimationFrame(drawLeaves);
+}
+drawLeaves();
+
+/* ---------- Apparition au défilement ---------- */
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entryItem){
+    if(entryItem.isIntersecting){ entryItem.target.classList.add('visible'); revealObserver.unobserve(entryItem.target); }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(function(itemEl){ revealObserver.observe(itemEl); });
+
+/* ---------- Diaporamas ---------- */
+function initSlider(boxId, delayMs){
+  var box = document.getElementById(boxId);
+  if(!box) return;
+  var slides = box.querySelectorAll('.t-slide');
+  var captionEl = box.querySelector('.t-caption');
+  var dotsWrap = box.querySelector('.t-dots, .expo-dots');
+  var dots = [];
+  slides.forEach(function(s, idx){
+    var b = document.createElement('b');
+    if(idx===0){ b.className='on'; }
+    dotsWrap.appendChild(b); dots.push(b);
+  });
+  var current = 0;
+  setInterval(function(){
+    current = (current+1) % slides.length;
+    slides.forEach(function(s, idx){ s.classList.toggle('active', idx===current); });
+    dots.forEach(function(d, idx){ d.classList.toggle('on', idx===current); });
+    var txt = slides[current].getAttribute('data-caption') || '';
+    captionEl.classList.add('fade');
+    setTimeout(function(){ captionEl.textContent = txt; captionEl.classList.remove('fade'); }, 700);
+  }, delayMs);
+}
+initSlider('trailerBox', 4600);
+initSlider('expoBox', 4200);
+
+/* ---------- Boutons réserver ---------- */
+document.querySelectorAll('.btn[data-day]').forEach(function(btnEl){
+  btnEl.addEventListener('click', function(){
+    var radioEl = document.querySelector('input[name="jour"][value="'+btnEl.getAttribute('data-day')+'"]');
+    if(radioEl){ radioEl.checked = true; }
+    document.getElementById('reservation').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- Formulaire opérationnel ---------- */
+var resForm = document.getElementById('resForm');
+var formError = document.getElementById('formError');
+var confirmBox = document.getElementById('confirmBox');
+var dayLabels = {
+  "23":"vendredi 23 octobre 2026 — Maison École du Grand Meaulnes",
+  "24":"samedi 24 octobre 2026 — Maison École du Grand Meaulnes",
+  "25":"dimanche 25 octobre 2026 — Château de Cornançay"
+};
+resForm.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var nomVal = document.getElementById('fNom').value.trim();
+  var mailVal = document.getElementById('fMail').value.trim();
+  var jourEl = document.querySelector('input[name="jour"]:checked');
+  var placesVal = document.getElementById('fPlaces').value;
+  var msgVal = document.getElementById('fMsg').value.trim();
+  formError.style.display = 'none';
+  if(nomVal.length < 2){ formError.textContent = 'Merci d\'indiquer votre nom.'; formError.style.display = 'block'; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mailVal)){ formError.textContent = 'Merci d\'indiquer un courriel valide.'; formError.style.display = 'block'; return; }
+  if(!jourEl){ formError.textContent = 'Merci de choisir votre journée.'; formError.style.display = 'block'; return; }
+  var mailSubject = encodeURIComponent('Réservation lancement — Le Banc d\'Élise');
+  var mailBody = encodeURIComponent(
+    'Nom : ' + nomVal +
+    '\nCourriel : ' + mailVal +
+    '\nJournée choisie : ' + dayLabels[jourEl.value] +
+    '\nNombre de places : ' + placesVal +
+    '\nMessage : ' + (msgVal || '—')
+  );
+  document.getElementById('mailLink').href = 'mailto:joelgouasdon@gmail.com?subject=' + mailSubject + '&body=' + mailBody;
+  document.getElementById('confirmText').innerHTML =
+    'Merci, <b>' + nomVal + '</b>. Votre réservation pour le <b>' + dayLabels[jourEl.value] +
+    '</b> est bien enregistrée (' + placesVal + ' place' + (placesVal>1?'s':'') + ').';
+  document.getElementById('confirmTicket').textContent =
+    placesVal + ' place' + (placesVal>1?'s':'') + ' · Épineuil-le-Fleuriel (Cher)';
+  resForm.style.display = 'none';
+  confirmBox.style.display = 'block';
+  confirmBox.scrollIntoView({behavior:'smooth', block:'center'});
+});
+document.getElementById('editBtn').addEventListener('click', function(){
+  confirmBox.style.display = 'none';
+  resForm.style.display = 'block';
+});
+</script>
+</body>
+</html>
+
