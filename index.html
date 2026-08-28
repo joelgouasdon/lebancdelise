@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Banc d'Élise — Joël Gouasdon · Lancement officiel</title>
+<!-- Musique de fond : « Destined » (Anthony Greninger) — fichier Archive.org -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-600-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-500-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/great-vibes@latest/latin-400-normal.css">
+<style>
+:root{
+  --bg:#f5edde; --bg2:#eee2ca; --card:#fbf6ea;
+  --ink:#2b2118; --soft:#5c4c3b; --faint:#8a7660;
+  --bordeaux:#7a2e26; --bordeaux-2:#5e211b;
+  --gold:#b98a3e; --gold2:#d8b878;
+  --green:#2c372b; --green2:#222b21;
+  --cream:#f7f1e3; --blue:#3d5187;
+  --ff-d:'Playfair Display',Georgia,serif;
+  --ff-b:'Lora',Georgia,serif;
+  --ff-s:'Great Vibes',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+html,body{overflow-x:hidden;}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--ink);line-height:1.85;font-size:17px;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2100;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+::selection{background:var(--gold);color:var(--cream);}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+
+/* ---------- LOADER ---------- */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:5000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;transition:opacity .9s ease,visibility .9s;}
+#loader.done{opacity:0;visibility:hidden;}
+#loader .ls{font-family:var(--ff-s);font-size:1.7rem;color:var(--gold);}
+#loader .lt{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.35em;font-size:1.15rem;color:var(--bordeaux);}
+#loader .ll{width:120px;height:1px;background:var(--gold);animation:lline 1.4s ease infinite alternate;}
+@keyframes lline{from{transform:scaleX(.3);opacity:.4;}to{transform:scaleX(1);opacity:1;}}
+
+/* ---------- PROGRESS ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:4000;}
+
+/* ---------- NAV ---------- */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:3000;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;transition:all .5s ease;background:transparent;}
+#mainNav.scrolled{background:rgba(245,237,222,.97);box-shadow:0 2px 24px rgba(43,33,24,.12);padding:.7rem 3rem;}
+.nav-brand{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.22em;font-size:1.02rem;color:var(--cream);text-decoration:none;transition:color .4s;}
+#mainNav.scrolled .nav-brand{color:var(--bordeaux);}
+.nav-links{display:flex;gap:2.2rem;align-items:center;}
+.nav-links a{font-size:.88rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);text-decoration:none;position:relative;transition:color .4s;}
+#mainNav.scrolled .nav-links a{color:var(--soft);}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .35s;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{padding:.55rem 1.5rem;border:1px solid var(--gold2);color:var(--cream)!important;}
+.nav-cta:hover{background:var(--bordeaux);border-color:var(--bordeaux);}
+.nav-cta::after{display:none;}
+@media(max-width:900px){#mainNav{padding:1rem 1.3rem;}#mainNav.scrolled{padding:.7rem 1.3rem;}.nav-links{gap:1rem;}.nav-links a:not(.nav-cta){display:none;}}
+
+/* ---------- HERO ---------- */
+#accueil{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:-8% 0;background:url("https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1aef6be89-2eb1-4495-b5c6-3457d0111be5.png") center 45%/cover no-repeat;will-change:transform;}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,18,12,.62),rgba(24,18,12,.10) 42%,rgba(20,15,10,.68));}
+.fog{position:absolute;left:-30%;width:160%;height:44%;pointer-events:none;opacity:.4;background:radial-gradient(ellipse at center,rgba(235,230,214,.5),transparent 65%);filter:blur(7px);}
+.fog-a{bottom:14%;animation:fogDrift 34s ease-in-out infinite alternate;}
+.fog-b{bottom:40%;opacity:.24;animation:fogDrift 46s ease-in-out infinite alternate-reverse;}
+@keyframes fogDrift{from{transform:translateX(-8%);}to{transform:translateX(10%);}}
+#leavesCanvas{position:absolute;inset:0;pointer-events:none;}
+.hero-inner{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;gap:5.5rem;max-width:1250px;margin:0 auto;padding:6.5rem 2rem 15rem;width:100%;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+.hero-book{flex:0 0 auto;animation:fadeUp 1.3s .35s ease both;}
+.book-float{animation:bookFloat 7s ease-in-out infinite alternate;}
+@keyframes bookFloat{from{transform:translateY(0);}to{transform:translateY(-14px);}}
+.book3d{--W:320px;--H:478px;--T:78px;position:relative;width:var(--W);height:var(--H);transform-style:preserve-3d;transform:rotateY(-26deg) rotateX(3deg);transition:transform 1s ease;}
+.book3d:hover{transform:rotateY(-13deg) rotateX(2deg);}
+.b-face{position:absolute;}
+.b-front{inset:0;transform:translateZ(calc(var(--T)/2));border-radius:3px 7px 7px 3px;overflow:hidden;box-shadow:0 34px 70px rgba(0,0,0,.55);}
+.b-front img{width:100%;height:100%;object-fit:cover;}
+.b-back{inset:0;transform:translateZ(calc(var(--T)/-2)) rotateY(180deg);background:linear-gradient(160deg,#5e211b,#7a2e26 55%,#4a1a15);border-radius:3px 7px 7px 3px;}
+.b-spine{top:0;left:calc(var(--T)/-2);width:var(--T);height:100%;transform:rotateY(-90deg);background:linear-gradient(90deg,#4a1a15,#7a2e26 45%,#5e211b);display:flex;align-items:center;justify-content:center;}
+.b-spine span{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--cream);font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.22em;font-size:.92rem;white-space:nowrap;}
+.b-pages{top:8px;right:calc(var(--T)/-2);width:var(--T);height:calc(100% - 16px);transform:rotateY(90deg);background:repeating-linear-gradient(90deg,#f7f1e3 0 2px,#e2d8bf 2px 4px);}
+.b-top{left:6px;right:6px;top:calc(var(--T)/-2);height:var(--T);transform:rotateX(90deg);background:repeating-linear-gradient(0deg,#f7f1e3 0 2px,#e2d8bf 2px 4px);}
+.hero-book::after{content:"";display:block;margin:2.4rem auto 0;width:80%;height:26px;background:radial-gradient(ellipse at center,rgba(0,0,0,.5),transparent 70%);filter:blur(6px);}
+@media(max-width:1020px){
+  .hero-inner{flex-direction:column;gap:3.2rem;padding-bottom:17rem;}
+  .book3d{--W:235px;--H:352px;--T:58px;}
+}
+.hero-content{max-width:760px;}
+.hero-over{font-family:var(--ff-s);font-size:clamp(1.7rem,3vw,2.4rem);color:var(--gold2);margin-bottom:1rem;animation:fadeUp 1.2s .2s ease both;}
+.hero-title{font-family:var(--ff-d);font-weight:500;text-transform:uppercase;color:var(--cream);font-size:clamp(3.2rem,9vw,7.2rem);line-height:1.08;letter-spacing:.08em;text-shadow:0 4px 44px rgba(0,0,0,.55);animation:fadeUp 1.6s .55s ease both;}
+.hero-orn{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.6rem auto;animation:fadeUp 1.4s 1.4s ease both;}
+.hero-orn span{display:block;width:86px;height:1px;background:var(--gold2);opacity:.85;}
+.hero-orn i{color:var(--gold2);font-style:normal;font-size:1.2rem;}
+.hero-tag{font-family:var(--ff-d);font-style:italic;font-size:clamp(1.35rem,2.8vw,1.9rem);color:#ead9b8;max-width:720px;margin:0 auto;line-height:1.6;animation:fadeUp 1.4s 1.7s ease both;}
+.hero-banner{position:absolute;left:0;right:0;margin:0 auto;bottom:4.6rem;z-index:6;width:min(92%,660px);text-align:center;
+  padding:1.25rem 1.6rem;background:rgba(22,16,10,.72);border:1px solid rgba(216,184,120,.75);outline:1px solid rgba(216,184,120,.35);outline-offset:5px;backdrop-filter:blur(3px);animation:fadeUp 1.4s 2s ease both;}
+.hb-top{font-family:var(--ff-d);font-style:italic;color:var(--gold2);font-size:1.05rem;letter-spacing:.08em;}
+.hb-lieu{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.2em;color:var(--cream);font-size:clamp(1rem,2.2vw,1.25rem);margin-top:.25rem;}
+.hb-dates{margin-top:.45rem;font-size:1rem;letter-spacing:.3em;color:var(--gold2);}
+.hb-ville{margin-top:.3rem;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:#cfc0a2;}
+.hero-scroll{position:absolute;bottom:.9rem;left:0;right:0;margin:0 auto;width:max-content;z-index:6;color:var(--cream);font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;text-decoration:none;opacity:.85;animation:fadeUp 1.4s 2.4s ease both;}
+.hero-scroll::after{content:"";display:block;width:1px;height:30px;margin:.6rem auto 0;background:linear-gradient(var(--gold2),transparent);animation:scrollLine 2.2s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}55%{transform:scaleY(1);}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* ---------- RUBAN ---------- */
+.ribbon{background:var(--green2);overflow:hidden;border-top:1px solid rgba(216,184,120,.25);border-bottom:1px solid rgba(216,184,120,.25);}
+.ribbon-track{display:inline-flex;gap:3.4rem;white-space:nowrap;padding:.75rem 0;font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:#c9b98f;animation:mar 40s linear infinite;will-change:transform;}
+.ribbon-track b{color:var(--gold2);font-weight:400;}
+@keyframes mar{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- COQUILLE ---------- */
+.sec{padding:7.5rem 1.5rem;position:relative;}
+.shell{max-width:1160px;margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:4.2rem;}
+.kicker{font-family:var(--ff-s);font-size:clamp(1.5rem,2.6vw,1.9rem);color:var(--gold);margin-bottom:.4rem;}
+.title{font-family:var(--ff-d);font-weight:500;font-size:clamp(2.1rem,4.6vw,3.3rem);color:var(--bordeaux);line-height:1.2;}
+.orn{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:1.5rem;}
+.orn span{width:0;height:1px;background:var(--gold);transition:width 1.2s ease .2s;}
+.orn.in span{width:70px;}
+.orn i{color:var(--gold);font-style:normal;opacity:0;transition:opacity 1s .6s;}
+.orn.in i{opacity:1;}
+[data-rv]{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);}
+[data-rv="left"]{transform:translateX(-44px);}
+[data-rv="right"]{transform:translateX(44px);}
+[data-rv="zoom"]{transform:scale(.92);}
+[data-rv="blur"]{filter:blur(8px);transform:none;}
+[data-rv].in{opacity:1;transform:none;filter:none;}
+
+/* ---------- BOUTONS ---------- */
+.btn{position:relative;overflow:hidden;display:inline-block;margin-top:1.6rem;font-family:var(--ff-b);font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;padding:1rem 2.3rem;border:1px solid var(--bordeaux);color:var(--bordeaux);background:transparent;cursor:pointer;text-decoration:none;transition:all .45s ease;}
+.btn:hover{background:var(--bordeaux);color:var(--cream);box-shadow:0 12px 28px rgba(122,46,38,.3);}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s ease;}
+.btn:hover::after{left:130%;}
+.btn-solid{background:var(--bordeaux);color:var(--cream);}
+.btn-solid:hover{background:var(--bordeaux-2);}
+
+/* ---------- LE ROMAN ---------- */
+#roman{background:var(--bg);}
+.roman-grid{display:grid;grid-template-columns:minmax(280px,430px) minmax(0,1fr);gap:5rem;align-items:start;}
+.cover-col{position:sticky;top:110px;}
+.cover-frame{background:var(--card);padding:14px;border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.4);outline-offset:7px;box-shadow:0 34px 70px rgba(43,33,24,.28);transform:rotate(-1.2deg);transition:transform .8s ease;}
+.cover-frame:hover{transform:rotate(0);}
+.cover-frame img{width:100%;}
+.roman-txt{max-width:640px;}
+.roman-txt p{color:var(--soft);margin-bottom:1.6rem;font-size:1.08rem;}
+.roman-txt .lead::first-letter{font-family:var(--ff-d);font-size:4.6rem;line-height:.82;float:left;padding:.2rem .8rem 0 0;color:var(--bordeaux);}
+.alice-block{margin:3rem auto;text-align:center;padding:2.2rem 1.6rem;background:var(--card);border:1px solid rgba(185,138,62,.35);outline:1px solid rgba(185,138,62,.22);outline-offset:6px;box-shadow:0 18px 44px rgba(43,33,24,.12);}
+.alice-orn{color:var(--gold);font-size:1.1rem;margin-bottom:.8rem;}
+.alice{font-family:var(--ff-s);font-size:clamp(1.1rem,1.9vw,1.45rem);color:var(--blue);line-height:1.8;}
+.alice-note{margin-top:1rem;font-style:italic;color:var(--faint);font-size:.88rem;}
+.final{font-family:var(--ff-d);font-style:italic;font-size:1.18rem;color:var(--bordeaux);border-left:2px solid var(--gold);padding-left:1.4rem;line-height:1.7;margin-top:2.6rem;}
+@media(max-width:960px){.roman-grid{grid-template-columns:1fr;gap:3.4rem;}.cover-col{position:static;max-width:430px;margin:0 auto;}}
+
+/* ---------- DIAPORAMA ---------- */
+#bande{background:var(--green2);}
+#bande .title{color:var(--cream);}
+.trailer{position:relative;height:min(74vh,660px);border:1px solid rgba(216,184,120,.4);outline:1px solid rgba(216,184,120,.2);outline-offset:9px;overflow:hidden;}
+.t-slide{position:absolute;inset:0;opacity:0;transition:opacity 2s ease;}
+.t-slide.active{opacity:1;}
+.t-slide img{width:100%;height:100%;object-fit:cover;animation:kb 13s ease-in-out infinite alternate;}
+@keyframes kb{from{transform:scale(1) translateY(0);}to{transform:scale(1.1) translateY(-2%);}}
+.t-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,22,16,.88),transparent 55%);}
+#bande .t-caption{position:absolute;bottom:9%;left:0;right:0;text-align:center;z-index:4;font-family:var(--ff-d);font-style:italic;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--cream);padding:0 2rem;transition:opacity .8s;}
+.t-caption.fade{opacity:0;}
+.t-dots{position:absolute;bottom:2.6%;left:0;right:0;display:flex;gap:.6rem;justify-content:center;z-index:4;}
+.t-dots b{width:28px;height:2px;background:rgba(247,241,227,.3);transition:background .5s;}
+.t-dots b.on{background:var(--gold2);}
+
+/* ---------- MYSTERE ---------- */
+#mystere{background:var(--bg2);}
+.myst-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem;}
+.myst-card{position:relative;background:var(--card);padding:2.8rem 2.6rem;border:1px solid rgba(122,46,38,.16);box-shadow:0 14px 36px rgba(43,33,24,.1);transition:transform .5s,box-shadow .5s;}
+.myst-card::before,.myst-card::after{content:"";position:absolute;width:26px;height:26px;border-color:var(--gold);border-style:solid;transition:all .5s;}
+.myst-card::before{top:10px;left:10px;border-width:1px 0 0 1px;}
+.myst-card::after{bottom:10px;right:10px;border-width:0 1px 1px 0;}
+.myst-card:hover{transform:translateY(-8px);box-shadow:0 26px 52px rgba(43,33,24,.18);}
+.myst-card:hover::before,.myst-card:hover::after{width:44px;height:44px;}
+.myst-num{font-family:var(--ff-d);font-size:2.4rem;color:var(--gold);line-height:1;}
+.myst-card h3{font-family:var(--ff-d);font-weight:500;font-size:1.35rem;color:var(--bordeaux);margin-top:.9rem;line-height:1.4;}
+.myst-card p{margin-top:.7rem;color:var(--faint);font-style:italic;font-size:.98rem;}
+.myst-close{text-align:center;margin-top:3.8rem;font-family:var(--ff-d);font-style:italic;font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--soft);}
+.myst-close b{color:var(--bordeaux);font-weight:500;}
+@media(max-width:800px){.myst-grid{grid-template-columns:1fr;}}
+
+/* ---------- EXPOSITION ---------- */
+#exposition{background:#221a12;color:var(--cream);}
+#exposition .kicker{color:var(--gold2);}
+#exposition .title{color:var(--cream);}
+.expo-intro{max-width:720px;margin:0 auto 1.2rem;text-align:center;color:#cbb98f;font-size:1.05rem;}
+.expo-note{max-width:640px;margin:0 auto 3.4rem;text-align:center;font-style:italic;font-size:.85rem;color:#a89468;}
+.expo-stage{max-width:700px;margin:0 auto;}
+.frame{background:#f3ecdc;padding:14px 14px 6px;border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.45);outline-offset:7px;box-shadow:0 34px 80px rgba(0,0,0,.55);}
+.frame .t-slide{position:relative;display:none;opacity:1;transition:none;}
+.frame .t-slide.active{display:block;}
+.frame .t-slide img{width:100%;height:min(60vh,560px);object-fit:contain;background:#f7f1e2;animation:none;}
+.frame .t-caption{position:static;text-align:center;font-family:var(--ff-d);font-style:italic;font-size:1.15rem;color:var(--soft);padding:.9rem 0 .8rem;}
+.expo-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.7rem;}
+.expo-dots b{width:28px;height:2px;background:rgba(216,184,120,.3);transition:background .5s;}
+.expo-dots b.on{background:var(--gold2);}
+.path{position:relative;display:flex;justify-content:center;flex-wrap:wrap;gap:2.2rem 0;margin-top:4rem;}
+.path::before{content:"";position:absolute;top:16px;left:8%;right:8%;height:1px;background:rgba(216,184,120,.35);transform:scaleX(0);transform-origin:left;transition:transform 2s ease .3s;}
+.path.in::before{transform:scaleX(1);}
+.stop{position:relative;width:100px;text-align:center;}
+.stop b{display:flex;width:34px;height:34px;margin:0 auto;border:1px solid var(--gold2);border-radius:50%;align-items:center;justify-content:center;font-family:var(--ff-d);color:var(--gold2);background:#221a12;font-size:.82rem;position:relative;z-index:1;}
+.stop span{display:block;margin-top:.55rem;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#cbb98f;}
+.expo-close{text-align:center;margin-top:3.6rem;font-family:var(--ff-d);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.55rem);color:#e8dcbd;}
+.expo-close b{color:var(--gold2);font-weight:500;}
+
+/* ---------- CITATION ---------- */
+#citation{background:var(--bordeaux);color:var(--cream);text-align:center;}
+.big-quote{font-family:var(--ff-d);font-style:italic;font-size:clamp(.85rem,3.1vw,1.9rem);line-height:1.5;white-space:nowrap;max-width:none;margin:0 auto;}
+.big-quote::before{content:"« ";color:var(--gold2);}
+.big-quote::after{content:" »";color:var(--gold2);}
+.quote-author{margin-top:1.8rem;letter-spacing:.32em;text-transform:uppercase;font-size:.8rem;color:var(--gold2);}
+.quote-note{margin-top:1.2rem;font-style:italic;opacity:.85;font-size:1rem;}
+
+/* ---------- EVENEMENTS ---------- */
+#evenements{background:var(--bg);}
+.evt-single{max-width:900px;margin:0 auto;}
+.evt{background:var(--card);border:1px solid rgba(122,46,38,.15);box-shadow:0 18px 44px rgba(43,33,24,.12);display:flex;flex-direction:column;overflow:hidden;transition:transform .5s;}
+.evt:hover{transform:translateY(-8px);}
+.evt-img{position:relative;height:340px;overflow:hidden;}
+.evt-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s ease;}
+.evt:hover .evt-img img{transform:scale(1.08);}
+.evt-med{position:absolute;top:1.3rem;left:1.3rem;width:104px;height:104px;border-radius:50%;background:var(--bordeaux);border:1px solid var(--gold2);box-shadow:0 10px 26px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);}
+.evt-med span{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold2);}
+.evt-med b{font-family:var(--ff-d);font-size:1.45rem;line-height:1.15;}
+.evt-body{padding:2.6rem 2.8rem 3rem;display:flex;flex-direction:column;flex:1;}
+.evt-body h3{font-family:var(--ff-d);font-weight:500;font-size:1.7rem;color:var(--bordeaux);line-height:1.3;}
+.evt-place{margin-top:.6rem;font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);}
+.prog{list-style:none;margin:1.8rem 0 0;padding:0;}
+.prog li{display:flex;gap:1.2rem;align-items:baseline;padding:1rem 0;border-bottom:1px dashed rgba(122,46,38,.3);}
+.prog li:last-child{border-bottom:0;}
+.prog b{font-family:var(--ff-d);color:var(--bordeaux);font-size:1.08rem;white-space:nowrap;min-width:215px;}
+.prog span{color:var(--soft);}
+.evt-resto{margin-top:1.4rem;font-style:italic;color:var(--bordeaux);font-size:1.02rem;}
+.evt-resto b{color:var(--gold);}
+.evt-note{text-align:center;margin-top:3rem;font-style:italic;color:var(--faint);}
+@media(max-width:900px){.evt-grid{grid-template-columns:1fr;}}
+
+/* ---------- RESERVATION ---------- */
+#reservation{background:url("https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1ba1cabc4-6c0c-42ff-a536-08badabadaf5.png") center/cover no-repeat fixed;}
+#reservation::before{content:"";position:absolute;inset:0;background:rgba(238,226,202,.92);}
+#reservation .shell{position:relative;}
+.form-card{max-width:780px;margin:0 auto;background:var(--card);border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.4);outline-offset:8px;box-shadow:0 30px 70px rgba(43,33,24,.28);padding:3.6rem 3.2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;}
+.field{margin-bottom:1.9rem;}
+.field label{display:block;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--faint);margin-bottom:.4rem;}
+.field input,.field select{width:100%;padding:.75rem .2rem;border:0;border-bottom:1px solid rgba(92,76,59,.45);background:transparent;font-family:var(--ff-b);font-size:1.05rem;color:var(--ink);transition:border .3s;border-radius:0;}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--gold);}
+.day-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.day-card{position:relative;cursor:pointer;}
+.day-card input{position:absolute;opacity:0;}
+.day-card .dc{display:block;text-align:center;padding:1.1rem .5rem;border:1px solid rgba(92,76,59,.35);background:transparent;transition:all .35s;}
+.day-card .dc b{display:block;font-family:var(--ff-d);font-size:1.7rem;color:var(--bordeaux);line-height:1.1;}
+.day-card .dc span{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-top:.3rem;}
+.day-card .dc em{display:block;font-style:italic;font-size:.82rem;color:var(--faint);margin-top:.4rem;line-height:1.45;}
+.day-card input:checked + .dc{background:var(--bordeaux);border-color:var(--bordeaux);box-shadow:0 12px 28px rgba(122,46,38,.35);transform:translateY(-4px);}
+.day-card input:checked + .dc b{color:var(--cream);}
+.day-card input:checked + .dc span,.day-card input:checked + .dc em{color:var(--gold2);}
+.form-submit{width:100%;text-align:center;}
+.form-error{color:var(--bordeaux);font-style:italic;margin-top:1rem;text-align:center;display:none;}
+.form-resto{margin-top:1.4rem;text-align:center;font-style:italic;color:var(--soft);font-size:.95rem;}
+#confirmBox{display:none;text-align:center;}
+#confirmBox .ok-orn{font-size:2.4rem;color:var(--gold);}
+#confirmBox h3{font-family:var(--ff-d);font-weight:500;font-size:2rem;color:var(--bordeaux);margin-top:.8rem;}
+#confirmBox p{margin-top:1rem;color:var(--soft);}
+#confirmBox .ticket{display:inline-block;margin-top:1.6rem;padding:1rem 2rem;border:1px dashed var(--gold);background:var(--bg);font-style:italic;color:var(--soft);}
+#confirmStatus{margin-top:1.4rem;font-size:.95rem;}
+#confirmStatus.ok{color:#3f6b3a;}
+#editBtn{margin-top:1.6rem;margin-right:.6rem;}
+#mailLink{margin-top:1rem;}
+@media(max-width:800px){.form-row{grid-template-columns:1fr;}.day-cards{grid-template-columns:1fr;}.form-card{padding:2.4rem 1.5rem;}}
+
+/* ---------- AUTEUR ---------- */
+#auteur{background:var(--bg2);}
+.auteur-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4.5rem;align-items:center;}
+.auteur-art{display:flex;flex-direction:column;gap:1.8rem;}
+.art-frame{background:var(--card);padding:10px 10px 6px;border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.4);outline-offset:5px;box-shadow:0 20px 44px rgba(43,33,24,.22);transition:transform .8s ease;}
+.art-frame img{width:100%;height:250px;object-fit:cover;background:#f7f1e2;}
+.art-cap{text-align:center;font-family:var(--ff-d);font-style:italic;font-size:.95rem;color:var(--soft);padding:.55rem 0 .35rem;}
+.art-frame.f1{transform:rotate(-1.6deg);}
+.art-frame.f2{transform:rotate(1.2deg);}
+.art-frame.f3{transform:rotate(-1deg);}
+.art-frame:hover{transform:rotate(0);}
+.auteur-txt h3{font-family:var(--ff-d);font-weight:500;font-size:2rem;color:var(--bordeaux);}
+.auteur-txt .sig{font-family:var(--ff-s);color:var(--gold);font-size:1.6rem;margin:.3rem 0 1.5rem;}
+.auteur-txt p{color:var(--soft);margin-bottom:1.15rem;font-size:1.03rem;}
+@media(max-width:900px){.auteur-grid{grid-template-columns:1fr;}}
+
+/* ---------- VIDEO ---------- */
+#film{background:var(--bg);}
+.video-frame{max-width:960px;margin:0 auto;background:#000;padding:10px;border:1px solid var(--gold);outline:1px solid rgba(185,138,62,.4);outline-offset:7px;box-shadow:0 30px 70px rgba(43,33,24,.3);}
+.video-box{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;}
+.video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-box .vposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;}
+.video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;border:2px solid var(--gold2);background:rgba(22,16,10,.78);color:var(--gold2);font-size:2.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s;animation:invitePulse 2.2s ease-in-out infinite;z-index:2;}
+.video-play:hover{transform:translate(-50%,-50%) scale(1.1);background:var(--bordeaux);border-color:var(--cream);}
+.video-label{position:absolute;bottom:6%;left:0;right:0;text-align:center;color:var(--cream);font-family:var(--ff-d);font-style:italic;font-size:1.05rem;letter-spacing:.06em;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,.7);}
+.video-fallback{max-width:960px;margin:1.2rem auto 0;text-align:center;font-style:italic;color:var(--faint);font-size:.92rem;}
+.video-fallback a{color:var(--bordeaux);text-decoration:underline;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--green2);color:#cfc0a2;text-align:center;padding:4.5rem 2rem;}
+footer .f-title{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.18em;font-size:1.7rem;color:var(--cream);}
+footer .f-orn{color:var(--gold2);margin:1.1rem 0;}
+footer p{font-style:italic;font-size:.96rem;}
+footer .f-small{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;font-style:normal;margin-top:1.4rem;opacity:.75;}
+
+/* ---------- MUSIQUE ---------- */
+#musicBtn{position:fixed;right:1.4rem;bottom:1.4rem;z-index:3500;width:56px;height:56px;border-radius:50%;border:1px solid var(--gold);background:rgba(34,26,18,.9);color:var(--gold2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+#musicBtn:hover{transform:scale(1.08);}
+#musicBtn .note{font-size:1.4rem;}
+#musicBtn .bars{display:none;gap:3px;align-items:flex-end;height:18px;}
+#musicBtn .bars i{width:3px;background:var(--gold2);animation:eq 1s ease-in-out infinite;}
+#musicBtn .bars i:nth-child(1){height:8px;}
+#musicBtn .bars i:nth-child(2){height:16px;animation-delay:.2s;}
+#musicBtn .bars i:nth-child(3){height:11px;animation-delay:.4s;}
+@keyframes eq{0%,100%{transform:scaleY(.5);}50%{transform:scaleY(1.15);}}
+#musicBtn.on .bars{display:flex;}
+#musicBtn.on .note{display:none;}
+#musicInvite{position:fixed;right:5.4rem;bottom:1.55rem;z-index:3500;background:var(--bordeaux);color:var(--cream);border:1px solid var(--gold2);padding:.7rem 1.3rem;font-family:var(--ff-b);font-style:italic;font-size:.95rem;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35);animation:invitePulse 2.2s ease-in-out infinite;transition:opacity .6s,transform .6s;}
+#musicInvite.hide{opacity:0;transform:translateY(12px);pointer-events:none;}
+@keyframes invitePulse{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.35);}50%{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 0 9px rgba(185,138,62,.16);}}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="ls">Joël Gouasdon</div><div class="lt">Le Banc d'Élise</div><div class="ll"></div></div>
+<div id="progress"></div>
+
+<!-- Musique de fond : « Destined » (Anthony Greninger) — archive.org -->
+<audio id="bgAudio" loop preload="auto">
+  <source src="https://dn711109.ca.archive.org/0/items/destined-anthony-greninger/Destined%20-%20Anthony%20Greninger.mp3" type="audio/mpeg">
+</audio>
+
+<nav id="mainNav">
+  <a class="nav-brand" href="#accueil">Le Banc d'Élise</a>
+  <div class="nav-links">
+    <a href="#roman">Le roman</a>
+    <a href="#mystere">Le mystère</a>
+    <a href="#exposition">Exposition</a>
+    <a href="#evenements">Événements</a>
+    <a href="#reservation" class="nav-cta">Réserver</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="accueil">
+  <div class="hero-bg" data-plx="0.14"></div>
+  <div class="hero-veil"></div>
+  <div class="fog fog-a"></div>
+  <div class="fog fog-b"></div>
+  <canvas id="leavesCanvas"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-book">
+      <div class="book-float">
+        <div class="book3d">
+          <div class="b-face b-back"></div>
+          <div class="b-face b-spine"><span>Le Banc d'Élise · Joël Gouasdon</span></div>
+          <div class="b-face b-pages"></div>
+          <div class="b-face b-top"></div>
+          <div class="b-face b-front"><img src="https://i.ibb.co/gMJmb3YP/Screenshot-2026-08-24-12-50-54.png" alt="Couverture du roman — Le Banc d'Élise"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-over">Joël Gouasdon</div>
+      <h1 class="hero-title">LE BANC<br>D'ÉLISE</h1>
+      <div class="hero-orn"><span></span><i>❦</i><span></span></div>
+      <p class="hero-tag">Un message caché dans <em>Le Grand Meaulnes</em>.<br>Un secret. Un voyage vers la lumière.</p>
+    </div>
+  </div>
+
+  <div class="hero-banner">
+    <div class="hb-top">Lancement officiel</div>
+    <div class="hb-lieu">Musée École du Grand Meaulnes</div>
+    <div class="hb-dates">23 · 24 · 25 octobre 2026</div>
+    <div class="hb-ville">Épineuil-le-Fleuriel · Cher</div>
+  </div>
+  <a class="hero-scroll" href="#roman">Découvrir</a>
+</section>
+
+<div class="ribbon"><div class="ribbon-track" id="ribbonTrack">
+  <span>Le Banc d'Élise <b>❦</b> Joël Gouasdon <b>❦</b> Lancement officiel <b>❦</b> 23 · 24 · 25 octobre 2026 <b>❦</b> Musée École du Grand Meaulnes <b>❦</b> Épineuil-le-Fleuriel · Cher <b>❦</b> Dédicaces & exposition des tableaux <b>❦</b>&nbsp;</span>
+</div></div>
+
+<!-- ============ LE ROMAN ============ -->
+<section id="roman" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>Le roman</div>
+      <h2 class="title" data-rv data-d="120">Et si un livre vous attendait&nbsp;?</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="roman-grid">
+      <div class="cover-col" data-rv="left">
+        <div class="cover-frame"><img src="https://i.ibb.co/cKsKb9fX/4-eme-couverture.png" alt="Le Banc d'Élise — quatrième de couverture"></div>
+      </div>
+      <div class="roman-txt">
+        <p class="lead" data-rv>Un matin de novembre, sur un banc d'un parc de Vendée, un homme trouve un livre. <em>Le Grand Meaulnes</em>. Posé là, comme s'il l'attendait.</p>
+        <p data-rv>Entre les pages, une lettre signée d'une certaine Alice, qu'il ne connaît pas, et qui pourtant semble tout savoir de lui.</p>
+        <p data-rv>Joël Yonart est dessinateur. Sa femme, Élise, est morte cinq ans plus tôt. Depuis, ses mains ont oublié comment tenir un crayon.</p>
+        <div class="alice-block" data-rv>
+          <div class="alice-orn">❦</div>
+          <div class="alice">«&nbsp;Vous croyez avoir tout perdu, écrit Alice.<br>Vous n'avez encore rien retrouvé.&nbsp;»</div>
+          <div class="alice-note">— la lettre d'Alice, tracée à la plume, à l'encre bleue</div>
+        </div>
+        <p data-rv>Alors il prend la route…</p>
+        <p class="final" data-rv>Le Banc d'Élise est un roman du retour à la vie, et de ces livres qu'on dépose à temps sur les bancs, pour ceux qui ne savent pas encore qu'ils les attendent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EN IMAGES ============ -->
+<section id="bande" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>En images</div>
+      <h2 class="title" data-rv data-d="120">L'esprit du roman</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="trailer" id="trailerBox" data-rv="zoom">
+      <div class="t-slide active" data-caption="Un matin de novembre…"><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1aef6be89-2eb1-4495-b5c6-3457d0111be5.png" alt="Le banc face à l'étang"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Un banc. Un livre. Une absence."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/129b5ae0f-940c-4c26-8b75-dab0fc61b3b6.png" alt="La lectrice en robe blanche"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Et la route qui s'ouvre, vers le pays du Grand Meaulnes."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1ba1cabc4-6c0c-42ff-a536-08badabadaf5.png" alt="La route du Berry"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Sur les traces d'un roman aimé."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1636e91f7-038a-492f-a909-c9cdb7536d27.png" alt="La classe de Sainte-Agathe"><div class="t-veil"></div></div>
+      <div class="t-slide" data-caption="Jusqu'à la lumière."><img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/14ddec9c6-b769-4331-ba4f-8bdad002fa76.png" alt="Le château aux lanternes"><div class="t-veil"></div></div>
+      <div class="t-caption">Un matin de novembre…</div>
+      <div class="t-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MYSTERE ============ -->
+<section id="mystere" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>Ce que vous vous demanderez</div>
+      <h2 class="title" data-rv data-d="120">Quatre portes entrouvertes</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="myst-grid">
+      <div class="myst-card" data-rv data-d="0"><div class="myst-num">I.</div><h3>Qui est Alice, qui semble tout savoir de lui&nbsp;?</h3><p>Une inconnue qui l'attendait. Une écriture à la plume, une encre bleue d'un autre temps.</p></div>
+      <div class="myst-card" data-rv data-d="150"><div class="myst-num">II.</div><h3>Pourquoi ce livre, sur ce banc, ce matin-là&nbsp;?</h3><p>Un livre ne naît pas sur un banc. Il y est déposé. Par qui&nbsp;? Pour quoi&nbsp;?</p></div>
+      <div class="myst-card" data-rv data-d="300"><div class="myst-num">III.</div><h3>Où mène la ligne rouge tracée sur la carte&nbsp;?</h3><p>Des chemins de traverse, un village hors du temps, le pays d'un roman aimé.</p></div>
+      <div class="myst-card" data-rv data-d="450"><div class="myst-num">IV.</div><h3>Que restait-il d'Élise qu'il n'avait jamais vu&nbsp;?</h3><p>Chacun croit connaître ceux qu'il aime. Et pourtant…</p></div>
+    </div>
+    <p class="myst-close" data-rv>Aucune réponse ici.<br><b>Elles vous attendent entre les pages.</b></p>
+  </div>
+</section>
+
+<!-- ============ EXPOSITION : LES VRAIS TABLEAUX ============ -->
+<section id="exposition" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>Au Musée École du Grand Meaulnes</div>
+      <h2 class="title" data-rv data-d="120">Le chemin initiatique des dessins</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <p class="expo-intro" data-rv>Lors du lancement, les dessins originaux de l'auteur — ceux qui accompagnent chaque chapitre du roman — seront exposés dans l'ordre du récit, comme un chemin initiatique à travers le Musée École. Suivez le parcours tracé, de salle en salle, tableau après tableau…</p>
+    <p class="expo-note" data-rv>«&nbsp;Ce ne sont pas les vrais dessins sur ce diaporama, les vrais vous attendront…&nbsp;»</p>
+
+    <div class="expo-stage" data-rv="zoom" id="expoBox">
+      <div class="frame">
+        <div class="t-slide active" data-caption="Chapitre X — La mémoire des vivants"><img src="https://i.ibb.co/G4YkJcmz/memere.jpg" alt="Dessin original — Mémère, la mémoire des vivants"></div>
+        <div class="t-slide" data-caption="Chapitre XIII — La dame en blanc"><img src="https://i.ibb.co/hxbD2pQr/alice.png" alt="Dessin original — la dame en blanc au jardin d'hiver"></div>
+        <div class="t-slide" data-caption="Chapitre XIV — La barque de l'étang"><img src="https://i.ibb.co/mrzHrJS0/barque.png" alt="Dessin original — la barque amarrée au bord de l'étang"></div>
+        <div class="t-slide" data-caption="Chapitre XVI — La Gloriette"><img src="https://i.ibb.co/KtSZY7M/kiosque.png" alt="Dessin original — la gloriette sous la glycine"></div>
+        <div class="t-slide" data-caption="Chapitre XXIII — Le passeur"><img src="https://i.ibb.co/4ZLFfG1G/chapitre-XXIII.png" alt="Dessin original — le livre posé sur le banc, le passeur"></div>
+        <div class="t-caption">Chapitre X — La mémoire des vivants</div>
+      </div>
+      <div class="expo-dots"></div>
+    </div>
+
+    <div class="path" id="pathRow">
+      <div class="stop" data-rv data-d="0"><b>X</b><span>Mémère</span></div>
+      <div class="stop" data-rv data-d="150"><b>XIII</b><span>La dame en blanc</span></div>
+      <div class="stop" data-rv data-d="300"><b>XIV</b><span>La barque</span></div>
+      <div class="stop" data-rv data-d="450"><b>XVI</b><span>La Gloriette</span></div>
+      <div class="stop" data-rv data-d="600"><b>XXIII</b><span>Le passeur</span></div>
+      <div class="stop" data-rv data-d="750"><b>✒</b><span>Dédicace</span></div>
+    </div>
+
+    <p class="expo-close" data-rv>Au bout du parcours, <b>l'auteur vous attend</b>, plume en main,<br>pour dédicacer votre exemplaire.</p>
+  </div>
+</section>
+
+<!-- ============ CITATION ============ -->
+<section id="citation" class="sec">
+  <div class="shell">
+    <p class="big-quote" data-rv>Un voyage initiatique… un véritable hymne à la Nature.</p>
+    <div class="quote-author" data-rv data-d="200">Jean-Yves Revault — écrivain, préface</div>
+    <p class="quote-note" data-rv data-d="350">Un roman placé sous l'ombre bienveillante d'Alain-Fournier et du <em>Grand Meaulnes</em>.</p>
+  </div>
+</section>
+
+<!-- ============ EVENEMENT : UN SEUL LIEU ============ -->
+<section id="evenements" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>Le lancement officiel</div>
+      <h2 class="title" data-rv data-d="120">Trois jours au Musée École<br>du Grand Meaulnes</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+
+    <div class="evt-single" data-rv="zoom">
+      <div class="evt">
+        <div class="evt-img">
+          <img src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/1636e91f7-038a-492f-a909-c9cdb7536d27.png" alt="La classe du Musée École du Grand Meaulnes">
+          <div class="evt-med"><span>oct.</span><b>23·24·25</b><span>2026</span></div>
+        </div>
+        <div class="evt-body">
+          <h3>Musée École du Grand Meaulnes</h3>
+          <div class="evt-place">Épineuil-le-Fleuriel · Cher</div>
+          <ul class="prog">
+            <li><b>Vendredi 23 octobre — 18h</b><span>Lancement officiel du roman</span></li>
+            <li><b>Samedi 24 octobre — 10h à 18h</b><span>Dédicace du roman & exposition des tableaux</span></li>
+            <li><b>Dimanche 25 octobre — 10h à 18h</b><span>Dédicace du roman & exposition des tableaux</span></li>
+          </ul>
+          <p class="evt-resto"><b>❦</b> Petite restauration sur place.</p>
+          <button class="btn" data-day="23">Réserver ma place</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="evt-note" data-rv>Entrée libre sur réservation — les places sont comptées, comme les exemplaires du premier jour.</p>
+  </div>
+</section>
+
+<!-- ============ RESERVATION ============ -->
+<section id="reservation" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>Réservation</div>
+      <h2 class="title" data-rv data-d="120">Je viendrai au lancement</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="form-card" data-rv="zoom">
+      <form id="resForm" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="fNom">Nom & prénom *</label><input type="text" id="fNom" name="nom" placeholder="Votre nom" required></div>
+          <div class="field"><label for="fMail">Courriel *</label><input type="email" id="fMail" name="email" placeholder="vous@exemple.fr" required></div>
+        </div>
+        <div class="field">
+          <label>Choisissez votre journée *</label>
+          <div class="day-cards">
+            <label class="day-card"><input type="radio" name="jour" value="23"><span class="dc"><b>23</b><span>octobre · 18h</span><em>Lancement officiel<br>du roman</em></span></label>
+            <label class="day-card"><input type="radio" name="jour" value="24"><span class="dc"><b>24</b><span>octobre · 10h-18h</span><em>Dédicace &<br>exposition</em></span></label>
+            <label class="day-card"><input type="radio" name="jour" value="25"><span class="dc"><b>25</b><span>octobre · 10h-18h</span><em>Dédicace &<br>exposition</em></span></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="fPlaces">Nombre de places</label>
+            <select id="fPlaces" name="places"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="field"><label for="fMsg">Un mot pour l'auteur (facultatif)</label><input type="text" id="fMsg" name="message" placeholder="Votre message…"></div>
+        </div>
+        <button type="submit" class="btn btn-solid form-submit" id="submitBtn">Confirmer ma réservation</button>
+        <p class="form-error" id="formError"></p>
+        <p class="form-resto">Musée École du Grand Meaulnes — Épineuil-le-Fleuriel (Cher) · Petite restauration sur place.</p>
+      </form>
+      <div id="confirmBox">
+        <div class="ok-orn">❦</div>
+        <h3>Votre place est réservée</h3>
+        <p id="confirmText"></p>
+        <div class="ticket" id="confirmTicket"></div>
+        <p id="confirmStatus"></p>
+        <p style="margin-top:1.2rem;font-style:italic;color:var(--faint);">À très bientôt, sur les terres du Grand Meaulnes.</p>
+        <a id="mailLink" class="btn" href="#" style="display:none;">Envoyer par e-mail à joelgouasdon@gmail.com</a>
+        <button class="btn" id="editBtn">Modifier ma réservation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+<section id="auteur" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>L'auteur</div>
+      <h2 class="title" data-rv data-d="120">Joël Gouasdon</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="auteur-grid">
+      <div class="auteur-art" data-rv="left">
+        <div class="art-frame f1"><img src="https://i.ibb.co/hxbD2pQr/alice.png" alt="Dessin original — La dame en blanc"><div class="art-cap">La dame en blanc</div></div>
+        <div class="art-frame f2"><img src="https://i.ibb.co/mrzHrJS0/barque.png" alt="Dessin original — La barque de l'étang"><div class="art-cap">La barque de l'étang</div></div>
+        <div class="art-frame f3"><img src="https://i.ibb.co/G4YkJcmz/memere.jpg" alt="Dessin original — Les mains de Mémère"><div class="art-cap">Les mains de Mémère</div></div>
+      </div>
+      <div class="auteur-txt">
+        <h3 data-rv>Dessinateur & écrivain</h3>
+        <div class="sig" data-rv data-d="150">sous le nom d'artiste ARTYON</div>
+        <p data-rv>Né en 1960 à Savigny-le-Vieux, en Normandie, Joël Gouasdon a bâti sa vie professionnelle comme Directeur Commercial et marketing. Mais derrière les chiffres, une autre histoire n'a jamais cessé de vibrer&nbsp;: celle d'un enfant de l'assistance publique qui, très tôt, a trouvé dans le dessin et l'écriture sa langue secrète, son refuge, sa manière la plus juste de dire le monde.</p>
+        <p data-rv data-d="150">Sous le nom d'artiste ARTYON, il publie «&nbsp;Un livre d'Amour&nbsp;» et «&nbsp;Nature Humaine&nbsp;», des recueils où ses dessins dialoguent avec des poèmes. En 2022, l'Académie des Arts, Sciences et Lettres de Paris lui décerne la médaille de Vermeil, saluant la singularité et la sensibilité de son art.</p>
+        <p data-rv data-d="300"><em>Le Banc d'Élise</em> est son nouveau roman, un livre né sur un rêve, sur les pas d'Alain-Fournier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="film" class="sec">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="kicker" data-rv>En vidéo</div>
+      <h2 class="title" data-rv data-d="120">Le Banc d'Élise, le film</h2>
+      <div class="orn"><span></span><i>❦</i><span></span></div>
+    </div>
+    <div class="video-frame" data-rv="zoom">
+      <div class="video-box" id="videoBox">
+        <img class="vposter" src="https://image.qwenlm.ai/public_source/413c015e-e800-4e26-9569-abc58073df98/14ddec9c6-b769-4331-ba4f-8bdad002fa76.png" alt="Affiche de la vidéo — Le Banc d'Élise">
+        <button class="video-play" id="videoPlay" aria-label="Lancer la vidéo">▶</button>
+        <div class="video-label">Lancer la vidéo du lancement</div>
+      </div>
+    </div>
+    <p class="video-fallback" data-rv>Si la vidéo ne se lance pas, <a href="https://drive.google.com/file/d/1jy2D-0bbkZmDl_BH1auTI_8sAdY6cmom/view?usp=sharing" target="_blank" rel="noopener">ouvrez-la directement sur Google Drive</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-title">Le Banc d'Élise</div>
+  <div class="f-orn">❦</div>
+  <p>Un roman de Joël Gouasdon — illustrations réalisées par l'auteur.</p>
+  <div class="f-small">Musée École du Grand Meaulnes — 2026</div>
+</footer>
+
+<button id="musicInvite">♪&nbsp; Cliquez pour entendre la musique</button>
+<button id="musicBtn" title="Musique d'ambiance" aria-label="Musique d'ambiance">
+  <span class="note">♪</span>
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<script>
+/* ---------- Loader ---------- */
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 500);
+});
+
+/* ---------- Nav + progression ---------- */
+var navBar = document.getElementById('mainNav');
+var progressBar = document.getElementById('progress');
+window.addEventListener('scroll', function(){
+  navBar.classList.toggle('scrolled', window.scrollY > 60);
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (h > 0 ? (window.scrollY/h)*100 : 0) + '%';
+});
+
+/* ---------- Ruban ---------- */
+var ribbonTrack = document.getElementById('ribbonTrack');
+ribbonTrack.innerHTML += ribbonTrack.innerHTML;
+
+/* ---------- Apparitions ---------- */
+var rvObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var d = parseInt(e.target.getAttribute('data-d') || 0, 10);
+      setTimeout(function(){ e.target.classList.add('in'); }, d);
+      rvObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('[data-rv], .orn, .path').forEach(function(el){ rvObserver.observe(el); });
+
+/* ---------- Parallaxe ---------- */
+var plxEls = document.querySelectorAll('[data-plx]');
+function plxTick(){
+  plxEls.forEach(function(el){
+    var r = el.parentElement.getBoundingClientRect();
+    var sp = parseFloat(el.getAttribute('data-plx'));
+    el.style.transform = 'translateY(' + (r.top * -sp) + 'px)';
+  });
+  requestAnimationFrame(plxTick);
+}
+plxTick();
+
+/* ---------- Diaporamas ---------- */
+function initSlider(boxId, delayMs){
+  var box = document.getElementById(boxId);
+  if(!box) return;
+  var slides = box.querySelectorAll('.t-slide');
+  var captionEl = box.querySelector('.t-caption');
+  var dotsWrap = box.querySelector('.t-dots, .expo-dots');
+  var dots = [];
+  slides.forEach(function(s, idx){
+    var b = document.createElement('b');
+    if(idx===0){ b.className='on'; }
+    dotsWrap.appendChild(b); dots.push(b);
+  });
+  var current = 0;
+  setInterval(function(){
+    current = (current+1) % slides.length;
+    slides.forEach(function(s, idx){ s.classList.toggle('active', idx===current); });
+    dots.forEach(function(d, idx){ d.classList.toggle('on', idx===current); });
+    var txt = slides[current].getAttribute('data-caption') || '';
+    captionEl.classList.add('fade');
+    setTimeout(function(){ captionEl.textContent = txt; captionEl.classList.remove('fade'); }, 700);
+  }, delayMs);
+}
+initSlider('trailerBox', 4800);
+initSlider('expoBox', 4600);
+
+/* ---------- Feuilles ---------- */
+var leavesCanvas = document.getElementById('leavesCanvas');
+var leavesCtx = leavesCanvas.getContext('2d');
+var leafList = [];
+var leafColors = ['#b98a3e','#8a5a2b','#6e2b25','#a4713a','#7d6a3a'];
+function sizeLeaves(){ leavesCanvas.width = leavesCanvas.offsetWidth; leavesCanvas.height = leavesCanvas.offsetHeight; }
+sizeLeaves();
+window.addEventListener('resize', sizeLeaves);
+function makeLeaf(init){
+  return { lx: Math.random()*leavesCanvas.width, ly: init ? Math.random()*leavesCanvas.height : -20,
+    ls: 3 + Math.random()*5, lvx: -0.4 + Math.random()*0.8, lvy: 0.6 + Math.random()*1.2,
+    lr: Math.random()*Math.PI*2, lvr: -0.02 + Math.random()*0.04,
+    lc: leafColors[Math.floor(Math.random()*leafColors.length)], lo: 0.3 + Math.random()*0.4 };
+}
+for(var li=0; li<30; li++){ leafList.push(makeLeaf(true)); }
+function drawLeaves(){
+  leavesCtx.clearRect(0,0,leavesCanvas.width,leavesCanvas.height);
+  for(var k=0;k<leafList.length;k++){
+    var lf = leafList[k];
+    lf.lx += lf.lvx + Math.sin(lf.ly*0.01)*0.5; lf.ly += lf.lvy; lf.lr += lf.lvr;
+    if(lf.ly > leavesCanvas.height + 24){ leafList[k] = makeLeaf(false); continue; }
+    leavesCtx.save(); leavesCtx.translate(lf.lx, lf.ly); leavesCtx.rotate(lf.lr);
+    leavesCtx.globalAlpha = lf.lo; leavesCtx.fillStyle = lf.lc;
+    leavesCtx.beginPath(); leavesCtx.ellipse(0,0,lf.ls,lf.ls*0.55,0,0,Math.PI*2); leavesCtx.fill();
+    leavesCtx.restore();
+  }
+  requestAnimationFrame(drawLeaves);
+}
+drawLeaves();
+
+/* ---------- MUSIQUE : « Destined » (Anthony Greninger) — archive.org ----------
+   Les navigateurs interdisent le son avant un premier geste de l'internaute.
+   On tente donc la lecture au chargement, puis on RETENTE à CHAQUE clic /
+   touche / contact jusqu'à ce que la musique démarre. Le bouton doré
+   permet ensuite de mettre en pause / relancer. */
+var bgAudio = document.getElementById('bgAudio');
+var musicBtn = document.getElementById('musicBtn');
+var musicInvite = document.getElementById('musicInvite');
+var musicStarted = false;
+function setOn(on){ musicBtn.classList.toggle('on', on); }
+function attemptPlay(){
+  if(musicStarted) return;
+  bgAudio.muted = false;
+  var p = bgAudio.play();
+  if(p){
+    p.then(function(){ musicStarted = true; setOn(true); musicInvite.classList.add('hide'); })
+     .catch(function(){ /* on retentera au prochain geste */ });
+  }
+}
+bgAudio.addEventListener('playing', function(){ musicStarted = true; setOn(true); musicInvite.classList.add('hide'); });
+bgAudio.addEventListener('pause', function(){ setOn(false); });
+window.addEventListener('load', function(){ setTimeout(attemptPlay, 600); });
+['pointerdown','keydown','touchend'].forEach(function(n){ document.addEventListener(n, attemptPlay); });
+musicInvite.addEventListener('click', function(e){ e.stopPropagation(); attemptPlay(); });
+musicBtn.addEventListener('click', function(e){
+  e.stopPropagation();
+  if(musicStarted){
+    if(bgAudio.paused){ bgAudio.play().catch(function(){}); }
+    else { bgAudio.pause(); }
+  } else { attemptPlay(); }
+});
+
+/* ---------- Vidéo ---------- */
+document.getElementById('videoPlay').addEventListener('click', function(){
+  var box = document.getElementById('videoBox');
+  box.innerHTML = '<iframe src="https://drive.google.com/file/d/1jy2D-0bbkZmDl_BH1auTI_8sAdY6cmom/preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Vidéo — Le Banc d\'Élise"></iframe>';
+});
+
+/* ---------- Boutons réserver ---------- */
+document.querySelectorAll('.btn[data-day]').forEach(function(btnEl){
+  btnEl.addEventListener('click', function(){
+    var radioEl = document.querySelector('input[name="jour"][value="'+btnEl.getAttribute('data-day')+'"]');
+    if(radioEl){ radioEl.checked = true; }
+    document.getElementById('reservation').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- Réservation ---------- */
+var resForm = document.getElementById('resForm');
+var formError = document.getElementById('formError');
+var confirmBox = document.getElementById('confirmBox');
+var submitBtn = document.getElementById('submitBtn');
+var mailLink = document.getElementById('mailLink');
+var dayLabels = {
+  "23":"vendredi 23 octobre 2026 à 18h — Lancement officiel au Musée École du Grand Meaulnes",
+  "24":"samedi 24 octobre 2026 (10h–18h) — Dédicace & exposition au Musée École",
+  "25":"dimanche 25 octobre 2026 (10h–18h) — Dédicace & exposition au Musée École"
+};
+resForm.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var nomVal = document.getElementById('fNom').value.trim();
+  var mailVal = document.getElementById('fMail').value.trim();
+  var jourEl = document.querySelector('input[name="jour"]:checked');
+  var placesVal = document.getElementById('fPlaces').value;
+  var msgVal = document.getElementById('fMsg').value.trim();
+  formError.style.display = 'none';
+  if(nomVal.length < 2){ formError.textContent = 'Merci d\'indiquer votre nom.'; formError.style.display = 'block'; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mailVal)){ formError.textContent = 'Merci d\'indiquer un courriel valide.'; formError.style.display = 'block'; return; }
+  if(!jourEl){ formError.textContent = 'Merci de choisir votre journée.'; formError.style.display = 'block'; return; }
+  var autoMsg =
+    'Bonjour ' + nomVal + ',\n\n' +
+    'Votre réservation pour le lancement du roman « Le Banc d\'Élise » est bien enregistrée :\n' +
+    'Journée : ' + dayLabels[jourEl.value] + '\n' +
+    'Nombre de places : ' + placesVal + '\n' +
+    'Petite restauration disponible sur place.\n' +
+    (msgVal ? 'Votre message : ' + msgVal + '\n' : '') +
+    '\nMerci de votre confiance. À très bientôt sur les terres du Grand Meaulnes !\n\nJoël Gouasdon';
+  var payload = {
+    _subject: 'Réservation lancement — Le Banc d\'Élise',
+    _template: 'table',
+    _captcha: 'false',
+    _autoresponse: autoMsg,
+    Nom: nomVal,
+    email: mailVal,
+    Courriel: mailVal,
+    Journee: dayLabels[jourEl.value],
+    Places: placesVal,
+    Message: msgVal || '—'
+  };
+  var mailHref = 'mailto:joelgouasdon@gmail.com?subject=' + encodeURIComponent('Réservation lancement — Le Banc d\'Élise') +
+    '&body=' + encodeURIComponent('Nom : '+nomVal+'\nCourriel : '+mailVal+'\nJournée : '+dayLabels[jourEl.value]+'\nPlaces : '+placesVal+'\nMessage : '+(msgVal||'—'));
+  submitBtn.textContent = 'Envoi en cours…';
+  submitBtn.disabled = true;
+  fetch('https://formsubmit.co/ajax/joelgouasdon@gmail.com', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(function(r){ if(!r.ok){ throw new Error('http'); } return r.json(); })
+  .then(function(){ showConfirm(nomVal, jourEl.value, placesVal, mailVal, true, mailHref); })
+  .catch(function(){ showConfirm(nomVal, jourEl.value, placesVal, mailVal, false, mailHref); });
+});
+function showConfirm(nomVal, jour, placesVal, mailVal, sent, mailHref){
+  document.getElementById('confirmText').innerHTML =
+    'Merci, <b>' + nomVal + '</b>. Votre réservation pour le <b>' + dayLabels[jour] +
+    '</b> est bien enregistrée (' + placesVal + ' place' + (placesVal>1?'s':'') + ').';
+  document.getElementById('confirmTicket').textContent =
+    placesVal + ' place' + (placesVal>1?'s':'') + ' · Épineuil-le-Fleuriel (Cher)';
+  var statusEl = document.getElementById('confirmStatus');
+  if(sent){
+    statusEl.className = 'ok';
+    statusEl.innerHTML = '✓ Réservation envoyée à <b>joelgouasdon@gmail.com</b>.<br>Une confirmation vient de vous être adressée à <b>' + mailVal + '</b>.';
+    mailLink.style.display = 'none';
+  } else {
+    statusEl.className = '';
+    statusEl.innerHTML = 'L\'envoi automatique n\'a pas abouti dans votre navigateur.<br>Cliquez ci-dessous pour finaliser en un clic&nbsp;:';
+    mailLink.href = mailHref;
+    mailLink.style.display = 'inline-block';
+  }
+  resForm.style.display = 'none';
+  confirmBox.style.display = 'block';
+  submitBtn.textContent = 'Confirmer ma réservation';
+  submitBtn.disabled = false;
+  confirmBox.scrollIntoView({behavior:'smooth', block:'center'});
+}
+document.getElementById('editBtn').addEventListener('click', function(){
+  confirmBox.style.display = 'none';
+  resForm.style.display = 'block';
+});
+</script>
+</body>
+</html>
